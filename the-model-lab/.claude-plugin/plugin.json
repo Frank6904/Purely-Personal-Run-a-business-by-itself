@@ -1,0 +1,21 @@
+{
+  "name": "the-model-lab",
+  "version": "1.0.0",
+  "description": "Turn any expertise into visual selling and teaching models. Four model engines (Core Model, Value Pyramid, Mountain, Three Roads), each with a guided interview, a live self-drawing worksheet (editable HTML with autosave), an editable PDF, and a 7-minute draw-along script. Built on Daniel Paul's Model Method: geometry carries the logic, labels stay under five words, every model has an entry, a pathway, a punchline and an exit.",
+  "author": {
+    "name": "Danny Paul",
+    "email": "danny@danielpaul.ai",
+    "url": "https://purelypersonal.ai"
+  },
+  "license": "PROPRIETARY",
+  "homepage": "https://github.com/purelypersonal/the-model-lab",
+  "keywords": [
+    "visual-models",
+    "design-thinking",
+    "sales-models",
+    "teaching-frameworks",
+    "worksheets",
+    "purely-personal",
+    "claude-skills"
+  ]
+}

@@ -7,7 +7,7 @@
   },
   "metadata": {
     "version": "1.0.0",
-    "description": "The Purely Personal AI C-Suite plugin · 5 engines (Marketing, Sales, Operations, Cash, Leadership) + 38 frameworks + BUSINESS-BRAIN.md as the context layer"
+    "description": "The Purely Personal AI C-Suite plugin \u00b7 5 engines (Marketing, Sales, Operations, Cash, Leadership) + 38 frameworks + BUSINESS-BRAIN.md as the context layer"
   },
   "plugins": [
     {
@@ -57,6 +57,29 @@
         "purely-personal"
       ],
       "source": "./ai-employee-bootcamp",
+      "strict": false
+    },
+    {
+      "name": "the-model-lab",
+      "description": "Turn any expertise into visual selling and teaching models. The Geometry Grammar Catalogue: 12 shapes (overlap, pyramid, mountain, three roads, rings, four rooms, funnel, flywheel, iceberg, bridge, ladder, curve), each with theory, build choreography, an earning test, a self-drawing fillable worksheet with autosave, and an editable PDF. Four guided skills interview you and pre-fill everything: core-model, value-pyramid, mountain, three-roads.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Daniel Paul",
+        "url": "https://purelypersonal.ai"
+      },
+      "homepage": "https://purelypersonal.ai",
+      "repository": "https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself",
+      "license": "PROPRIETARY",
+      "category": "productivity",
+      "keywords": [
+        "visual-models",
+        "design-thinking",
+        "sales-models",
+        "teaching-frameworks",
+        "worksheets",
+        "geometry-grammar"
+      ],
+      "source": "./the-model-lab",
       "strict": false
     }
   ]
