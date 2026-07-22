@@ -81,6 +81,29 @@
       ],
       "source": "./the-model-lab",
       "strict": false
+    },
+    {
+      "name": "the-stage-lab",
+      "description": "Visual delivery engine for sessions and stage talks in one likeable Pixar-adjacent art direction: soft-3D characters correctly cast per role (kids, adults, animals), cinematic glows, offline single-file HTML decks. story-slides, live-visual, stage-arc, session-recap.",
+      "version": "2.1.0",
+      "author": {
+        "name": "Daniel Paul",
+        "url": "https://purelypersonal.ai"
+      },
+      "homepage": "https://purelypersonal.ai",
+      "repository": "https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself",
+      "license": "PROPRIETARY",
+      "category": "productivity",
+      "keywords": [
+        "visual-storytelling",
+        "story-slides",
+        "pixar-style",
+        "soft-3d",
+        "stage-presentation",
+        "teaching-diagrams"
+      ],
+      "source": "./the-stage-lab",
+      "strict": false
     }
   ]
 }

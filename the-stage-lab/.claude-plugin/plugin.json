@@ -1,0 +1,23 @@
+{
+  "name": "the-stage-lab",
+  "version": "2.1.0",
+  "description": "The visual delivery engine for sessions and stage talks, with a permanent 13-character Pixar-style cast (generated once on Higgsfield, then only ever edited into new scenes at ~2 credits each \u2014 kids, adults, elders, a dog and a cat, correctly cast per role) plus a free soft-3D tier for diagrams and recaps. Offline single-file HTML outputs. Four skills: story-slides turns any story into a character-driven slide deck; live-visual builds teaching diagrams element-by-element live; stage-arc structures the talk on the what-is/what-could-be sparkline with a cast-aware shot list; session-recap turns the delivered session into one visual-summary canvas. Built on researched foundations: beat-to-shot-to-light grammar, caption laws, MIT/CC0 asset systems.",
+  "author": {
+    "name": "Danny Paul",
+    "email": "danny@danielpaul.ai",
+    "url": "https://purelypersonal.ai"
+  },
+  "license": "PROPRIETARY",
+  "homepage": "https://purelypersonal.ai",
+  "keywords": [
+    "visual-storytelling",
+    "story-slides",
+    "pixar-style",
+    "soft-3d",
+    "stage-presentation",
+    "sparkline",
+    "teaching-diagrams",
+    "purely-personal",
+    "claude-skills"
+  ]
+}
