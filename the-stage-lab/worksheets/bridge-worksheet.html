@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bridge Worksheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--page:#F7F6F3;--card:#FFFFFF;--border:#E5E3DE;--head:#F1F0EC;--ink:#17171B;--dim:#6B6B74;--accent:#F01621;--stroke:#D3D1CB}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Rethink Sans',sans-serif;background:var(--page);color:var(--ink);line-height:1.55;padding:40px 20px 80px}
+  .wrap{max-width:880px;margin:0 auto}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  h1{font-size:38px;font-weight:800;letter-spacing:-.02em}
+  .lede{color:var(--dim);font-size:16px;max-width:560px;margin-top:10px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 8px;align-items:center}
+  .btn{font-family:'Space Mono',monospace;font-size:12px;padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip{display:none;font-family:'Space Mono',monospace;font-size:11px;color:#0B7A43;background:#E7F5EC;border:1px solid #BFE3CC;padding:6px 10px;border-radius:99px}
+  .chip.show{display:inline-block}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-top:24px;overflow:hidden}
+  .card>.hd{background:var(--head);padding:14px 22px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+  .num{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+  .card>.hd b{font-size:16px}
+  .card>.hd span{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);margin-left:auto;text-transform:uppercase;letter-spacing:.08em}
+  .card .bd{padding:20px 22px}
+  .q{margin-bottom:18px}.q:last-child{margin-bottom:0}
+  .q label{display:block;font-weight:700;font-size:14.5px;margin-bottom:4px}
+  .q .hint{font-size:13px;color:var(--dim);margin-bottom:8px}
+  textarea,input[type=text]{width:100%;font-family:'Rethink Sans',sans-serif;font-size:14.5px;color:var(--ink);background:#FCFBF9;border:1px solid var(--border);border-radius:8px;padding:10px 12px;resize:vertical}
+  textarea{min-height:64px}
+  textarea:focus,input:focus{outline:none;border-color:var(--accent)}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:700px){.row{grid-template-columns:1fr}}
+  .diagram{padding:8px 22px 26px}
+  .diagram svg{width:100%;height:auto;display:block}
+  svg text{font-family:'Rethink Sans',sans-serif}
+  .foot{margin-top:36px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+  @media print{body{background:#fff;padding:0}.toolbar,.hint,.chip{display:none!important}.card{break-inside:avoid;border-color:#ccc}textarea,input[type=text]{border:none;background:#fff;padding:4px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Purely Personal &middot; The Model Lab &middot; Geometry: Bridge</div>
+  <h1>The Bridge</h1>
+  <p class="lede">Two cliffs, a gap, and planks. The bridge makes change feel crossable: the far side is real, the drop is named, and every plank is a step someone has walked before. Guides sell bridges, not destinations.</p>
+
+  <div class="toolbar">
+    <span class="chip" id="chip">Answers restored</span>
+    <button class="btn" id="exampleBtn" type="button">Show worked example</button>
+    <button class="btn" id="backupBtn" type="button">Download backup</button>
+    <button class="btn" id="resetBtn" type="button">Reset</button>
+    <button class="btn primary" id="printBtn" type="button">Print / Save as PDF</button>
+  </div>
+
+  <div class="card">
+    <div class="hd"><b>Your bridge, drawing itself</b><span>live</span></div>
+    <div class="diagram">
+      <svg viewBox="0 0 700 420">
+        <path d="M40 160 L185 160 L185 400 L40 400 Z" fill="#F1F0EC" stroke="#17171B" stroke-width="3"/>
+        <path d="M515 130 L660 130 L660 400 L515 400 Z" fill="#F1F0EC" stroke="#17171B" stroke-width="3"/>
+        <text x="112" y="140" font-size="13" font-weight="800" text-anchor="middle">HERE</text>
+        <text x="112" y="200" font-size="12" font-weight="700" text-anchor="middle"><tspan data-bind="here">where they stand</tspan></text>
+        <text x="588" y="110" font-size="13" font-weight="800" text-anchor="middle">THERE</text>
+        <text x="588" y="170" font-size="12" font-weight="700" text-anchor="middle"><tspan data-bind="there">where they want to be</tspan></text>
+        <!-- planks -->
+        <line x1="185" y1="162" x2="515" y2="132" stroke="#17171B" stroke-width="3.5"/>
+        <line x1="185" y1="182" x2="515" y2="152" stroke="#17171B" stroke-width="2"/>
+        <g stroke="#17171B" stroke-width="2">
+          <line x1="240" y1="157" x2="240" y2="177"/><line x1="350" y1="147" x2="350" y2="167"/><line x1="460" y1="137" x2="460" y2="157"/>
+        </g>
+        <g font-size="11.5" font-weight="700" text-anchor="middle">
+          <text x="240" y="122" transform="rotate(-5 240 122)"><tspan data-bind="plank1">plank one</tspan></text>
+          <text x="350" y="112" transform="rotate(-5 350 112)"><tspan data-bind="plank2">plank two</tspan></text>
+          <text x="460" y="102" transform="rotate(-5 460 102)"><tspan data-bind="plank3">plank three</tspan></text>
+        </g>
+        <!-- the drop -->
+        <text x="350" y="330" font-size="12.5" font-style="italic" fill="var(--accent)" font-weight="700" text-anchor="middle">the drop: <tspan data-bind="drop">what falls without a bridge</tspan></text>
+        <path d="M310 355 q 40 18 80 0" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hd"><div class="num">1</div><b>The near cliff: here</b><span>no judgement</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="hereFull">Where do they stand today, in plain facts?</label>
+        <div class="hint">Describe the ground under their feet, not their failings. The near cliff is solid: it holds them fine, it just does not go anywhere.</div>
+        <textarea id="hereFull" placeholder="Today they stand on..."></textarea>
+        <input type="text" id="hereIn" maxlength="28" placeholder="compressed (5 words max)" style="margin-top:8px">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hd"><div class="num">2</div><b>The far cliff: there</b><span>their words</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="thereFull">Where do they want to stand, in THEIR words?</label>
+        <div class="hint">Drawn slightly higher than the near cliff, and real: use language they have actually said to you, not your marketing copy.</div>
+        <textarea id="thereFull" placeholder="They want to stand where..."></textarea>
+        <input type="text" id="thereIn" maxlength="28" placeholder="compressed (5 words max)" style="margin-top:8px">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hd"><div class="num">3</div><b>The drop</b><span>name it once, kindly</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="dropFull">What happens to people who try to jump the gap without a bridge?</label>
+        <div class="hint">This is why DIY fails: the courses half-finished, the tools abandoned, the year lost. Name it once, factually, then leave it alone. The drop creates respect for the bridge, not fear of the gap.</div>
+        <textarea id="dropFull" placeholder="The ones who jump without a bridge..."></textarea>
+        <input type="text" id="dropIn" maxlength="30" placeholder="compressed (5 words max)" style="margin-top:8px">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hd"><div class="num">4</div><b>The three planks</b><span>your method</span></div>
+    <div class="bd">
+      <div class="q">
+        <div class="hint" style="margin-bottom:12px">Each plank is one stage of your method: named in two or three words, walkable in one step, and proven (someone has crossed on it before). Three planks. If you have seven steps, group them.</div>
+        <div class="row">
+          <div><input type="text" id="plank1In" maxlength="20" placeholder="plank 1"><textarea id="plank1What" placeholder="the step + proof someone crossed it" style="margin-top:8px;min-height:70px"></textarea></div>
+          <div><input type="text" id="plank2In" maxlength="20" placeholder="plank 2"><textarea id="plank2What" placeholder="the step + proof someone crossed it" style="margin-top:8px;min-height:70px"></textarea></div>
+          <div><input type="text" id="plank3In" maxlength="20" placeholder="plank 3"><textarea id="plank3What" placeholder="the step + proof someone crossed it" style="margin-top:8px;min-height:70px"></textarea></div>
+        </div>
+      </div>
+      <div class="q" style="margin-top:16px">
+        <label for="handrail">The handrail: what keeps them safe the whole way across?</label>
+        <div class="hint">The support that never leaves: the community, the office hours, the "no one left behind" promise. People cross bridges with handrails.</div>
+        <textarea id="handrail" placeholder="The whole way across, they can hold onto..."></textarea>
+      </div>
+      <div class="q">
+        <label for="punchline">The punchline</label>
+        <div class="hint">Usually some version of: "You don't need more courage. You need a bridge that has held everyone before you." Write yours.</div>
+        <textarea id="punchline" placeholder="You don't need..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">PURELY PERSONAL &middot; THE MODEL LAB &middot; YOUR ANSWERS SAVE AUTOMATICALLY IN THIS BROWSER</div>
+</div>
+
+<script>
+(function(){
+  var KEY='pp-bridge-v1';
+  var fields=['hereFull','hereIn','thereFull','thereIn','dropFull','dropIn','plank1In','plank1What','plank2In','plank2What','plank3In','plank3What','handrail','punchline'];
+  var binds={hereIn:'here',thereIn:'there',dropIn:'drop',plank1In:'plank1',plank2In:'plank2',plank3In:'plank3'};
+  var defaults={here:'where they stand',there:'where they want to be',drop:'what falls without a bridge',plank1:'plank one',plank2:'plank two',plank3:'plank three'};
+  var example={hereFull:'A working coach with real clients and 20 years of expertise, doing every piece of marketing by hand, invisible online, evenings gone.',hereIn:'expert, invisible, exhausted',thereFull:'"I want my business to run without me doing everything." Leading a system: content daily, leads warm, mornings briefed.',thereIn:'the business runs itself',dropFull:'They buy the course, watch module one, life happens. Six months later: another unused tool, thinner confidence, and the quiet story "I guess I\'m not technical" gets one chapter longer.',dropIn:'half-finished courses, thinner confidence',plank1In:'find your voice',plank1What:'Voice DNA extracted from real emails and calls. Proof: every cohort hears their own voice in the first output and gasps.',plank2In:'build the brain',plank2What:'Foundation docs, one folder, one twin. Proof: students close real deals with the first tailored tool.',plank3In:'hire the team',plank3What:'AI employees + routines take the daily work. Proof: morning briefs arriving while they walk the dog.',handrail:'The cohort WhatsApp group, the team in every breakout room, and the rule we say out loud every session: no one gets left behind.',punchline:'You don\'t need more courage or more willpower. You need a bridge that has already held a hundred people exactly like you.'};
+  function el(id){return document.getElementById(id)}
+  function clamp(s,n){s=(s||'').trim();return s.length>n?s.slice(0,n-1)+'…':s}
+  function paint(){Object.keys(binds).forEach(function(id){var sp=document.querySelector('[data-bind="'+binds[id]+'"]');sp.textContent=clamp(el(id).value,id==='dropIn'?28:(id.indexOf('plank')===0?18:24))||defaults[binds[id]]})}
+  function save(){var d={};fields.forEach(function(id){d[id]=el(id).value});try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  function load(){var r=null;try{r=localStorage.getItem(KEY)}catch(e){}if(!r)return false;try{var d=JSON.parse(r);var a=false;fields.forEach(function(id){if(d[id]){el(id).value=d[id];a=true}});return a}catch(e){return false}}
+  fields.forEach(function(id){['input','change','focusout'].forEach(function(ev){el(id).addEventListener(ev,function(){save();paint()})})});
+  window.addEventListener('beforeunload',save);
+  document.addEventListener('visibilitychange',function(){if(document.hidden)save()});
+  if(load()){el('chip').classList.add('show')}
+  el('exampleBtn').addEventListener('click',function(){fields.forEach(function(id){if(!el(id).value)el(id).value=example[id]||''});save();paint()});
+  el('resetBtn').addEventListener('click',function(){if(!confirm('Clear every answer on this worksheet?'))return;fields.forEach(function(id){el(id).value=''});try{localStorage.removeItem(KEY)}catch(e){}paint()});
+  el('backupBtn').addEventListener('click',function(){var L=['THE BRIDGE - WORKSHEET BACKUP',''];fields.forEach(function(id){var q=document.querySelector('label[for="'+id+'"]');L.push((q?q.textContent:id)+':');L.push(el(id).value||'(empty)');L.push('')});var b=new Blob([L.join('\n')],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='bridge-backup.txt';a.click()});
+  el('printBtn').addEventListener('click',function(){window.print()});
+  paint();
+})();
+</script>
+</body>
+</html>

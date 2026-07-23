@@ -1,4 +1,4 @@
-# The Stage Lab v2.1
+# The Stage Lab v2.2
 
 The visual delivery engine for sessions and stage talks. Its heart is a **permanent 14-character Pixar-style cast** — generated once, then only ever *edited* into new scenes (~2 credits per scene on Higgsfield) — including **Danny himself as The Presenter**, heroes, clients, elders, two kids, a dog and a cat. Every output ships as self-contained offline HTML that runs from a double-click on any stage laptop.
 
@@ -10,6 +10,8 @@ The visual delivery engine for sessions and stage talks. Its heart is a **perman
 | During | `/story-slides` | **The flagship**: turns any story into Pixar-grade cinematic slides generated from the cast — consistent characters, one emotional beat per slide, credit estimate approved before generating | Offline story deck with presenter notes |
 | During | `/live-visual` | Builds a teaching diagram element-by-element live — glowing cards, 3D icons, one keypress per idea (free soft-3D tier) | Progressive-build diagram + script |
 | After | `/session-recap` | Turns the delivered session into one visual-summary canvas for follow-up and social proof (free soft-3D tier) | 16:9 recap canvas with PNG export |
+| During | `/core-model` `/value-pyramid` `/mountain` `/three-roads` | **The Model Lab**: guided interviews that build YOUR drawable teaching model, with self-drawing worksheets, editable PDFs, and 7-minute draw-along scripts (plus the 12-shape geometry grammar catalogue) | Pre-filled worksheet + draw-along script |
+| During | `/gsap-blueprint-deck` | Cinematic horizontally-scrolling GSAP workshop deck: pinned side-scrolling panels, monument story cold-opens, real brand logos, tool-by-tool hero slides — one offline HTML file | Scroll-cinema deck |
 
 ## The cast (`cast/CAST.md`)
 

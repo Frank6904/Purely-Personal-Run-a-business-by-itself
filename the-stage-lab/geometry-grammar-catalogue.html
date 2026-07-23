@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Geometry Grammar Catalogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--page:#F7F6F3;--card:#FFFFFF;--border:#E5E3DE;--head:#F1F0EC;--ink:#17171B;--dim:#6B6B74;--accent:#F01621;--green:#1FA971;--stroke:#D3D1CB}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Rethink Sans',sans-serif;background:var(--page);color:var(--ink);line-height:1.6}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+  header{padding:88px 0 56px;border-bottom:1px solid var(--border)}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-size:clamp(38px,5.5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  .lede{font-size:18px;color:var(--dim);max-width:640px;margin-top:18px}
+  section{padding:60px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+  .sub{color:var(--dim);font-size:16px;max-width:640px;margin-bottom:32px}
+  .laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .law{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px}
+  .law .n{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.12em;margin-bottom:8px}
+  .law b{font-size:15.5px;display:block;margin-bottom:5px}
+  .law p{font-size:13.5px;color:var(--dim)}
+  table.chooser{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px}
+  .chooser th{background:var(--head);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:12px 16px;color:var(--dim)}
+  .chooser td{padding:11px 16px;border-top:1px solid var(--border)}
+  .chooser td:first-child{font-weight:700}
+  .chooser td:last-child{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);font-weight:700}
+  .entry{background:#fff;border:1px solid var(--border);border-radius:16px;margin-bottom:28px;overflow:hidden}
+  .entry .top{display:flex;align-items:center;gap:20px;padding:24px 28px;background:var(--head);border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .entry .glyph{flex:none;width:84px;height:66px;background:#fff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .entry .tt h3{font-size:22px;font-weight:800}
+  .entry .tt .def{font-size:14px;color:var(--dim);font-style:italic}
+  .entry .idx{margin-left:auto;font-family:'Space Mono',monospace;font-size:12px;color:var(--dim)}
+  .entry .grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .entry .cell{padding:20px 28px;border-top:1px solid var(--border)}
+  .entry .cell:nth-child(odd){border-right:1px solid var(--border)}
+  .entry .cell:first-child,.entry .cell:nth-child(2){border-top:none}
+  .entry .cell b{display:block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .entry .cell p{font-size:14px;color:#3A3833}
+  .entry .files{padding:16px 28px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .entry .files span{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+  .filelink{font-family:'Space Mono',monospace;font-size:12px;padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--ink);text-decoration:none}
+  .filelink:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:760px){.entry .grid{grid-template-columns:1fr}.entry .cell:nth-child(odd){border-right:none}.entry .cell:nth-child(2){border-top:1px solid var(--border)}}
+  svg text{font-family:'Rethink Sans',sans-serif}
+  footer{padding:48px 0 80px;font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Purely Personal &middot; The Model Lab</div>
+    <h1>The Geometry Grammar Catalogue</h1>
+    <p class="lede">Twelve shapes, and everything each one silently argues. Every entry: what it is, why it works on the brain, how to build it, what it changes in the viewer, and the earning test that keeps you honest. Each geometry ships with a fillable worksheet and an editable PDF.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Why drawn shapes beat written words</h2>
+    <p class="sub">Four laws sit under every entry in this catalogue. They are why a model taught as a drawing outlives the same idea taught as prose.</p>
+    <div class="laws">
+      <div class="law"><div class="n">LAW 01</div><b>Twice encoded, twice recalled</b><p>A drawn shape with spoken narration is stored in two channels at once, image and language, and can be retrieved through either. Narrate while you draw, and put labels ON the drawing, never in a legend.</p></div>
+      <div class="law"><div class="n">LAW 02</div><b>One shape, one chunk</b><p>Working memory holds about four things. A good geometry compresses many claims into one perceptual object: a loop turns six cause-and-effect sentences into a single spinning wheel. One idea per shape, six labeled elements maximum.</p></div>
+      <div class="law"><div class="n">LAW 03</div><b>The reveal is load management</b><p>Viewers complete unfinished shapes in their heads, which is why drawing stroke by stroke, center last, layer by layer, holds attention. Progressive reveal is not theatre. It is how much the brain can take per second.</p></div>
+      <div class="law"><div class="n">LAW 04</div><b>Every shape makes a silent claim</b><p>Up means better. Center means essence. Narrowing means loss. A loop means it compounds. The shape argues before you say a word, so the content must EARN the shape's claim. Every entry below has its earning test.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Choosing the shape</h2>
+    <p class="sub">Start from the question your idea answers. The question picks the geometry; never the other way around.</p>
+    <table class="chooser">
+      <tr><th>The idea says...</th><th>The silent claim</th><th>Draw</th></tr>
+      <tr><td>The magic is where things combine</td><td>the overlap is the scarce prize</td><td>01 OVERLAP</td></tr>
+      <tr><td>There is an order and it must be climbed</td><td>upper layers rest on lower ones</td><td>02 PYRAMID</td></tr>
+      <tr><td>The journey is hard and has stages</td><td>camps make the climb survivable</td><td>03 MOUNTAIN</td></tr>
+      <tr><td>Waiting gets more expensive</td><td>the gap compounds</td><td>04 ROADS</td></tr>
+      <tr><td>One thing matters most, the rest orbits</td><td>center is essence</td><td>05 RINGS</td></tr>
+      <tr><td>Two tensions decide everything</td><td>four rooms, one move each</td><td>06 FOUR ROOMS</td></tr>
+      <tr><td>Many enter, few arrive</td><td>loss is structural</td><td>07 FUNNEL</td></tr>
+      <tr><td>Each part makes the next easier</td><td>it compounds without willpower</td><td>08 FLYWHEEL</td></tr>
+      <tr><td>What you see is the smallest part</td><td>mass below explains motion above</td><td>09 ICEBERG</td></tr>
+      <tr><td>Change feels dangerous but is crossable</td><td>the planks have held others</td><td>10 BRIDGE</td></tr>
+      <tr><td>Progress comes in countable steps</td><td>the next step is small</td><td>11 LADDER</td></tr>
+      <tr><td>The pain is a stage, not a verdict</td><td>the trough is on the map</td><td>12 CURVE</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The catalogue</h2>
+    <p class="sub">Twelve geometries. The first four are the core suite; the other eight extend the grammar. Every worksheet autosaves, draws itself as you type, and carries a worked example. Every PDF has real fillable form fields.</p>
+
+    <!-- 01 OVERLAP -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><circle cx="32" cy="18" r="13" fill="none" stroke="#17171B" stroke-width="2.5"/><circle cx="24" cy="30" r="13" fill="none" stroke="#17171B" stroke-width="2.5"/><circle cx="40" cy="30" r="13" fill="none" stroke="#17171B" stroke-width="2.5"/><circle cx="32" cy="26" r="4.5" fill="#F01621"/></svg></div>
+        <div class="tt"><h3>The Overlap</h3><div class="def">Interlocking circles whose intersection is the prize. The geometry of positioning and method.</div></div>
+        <div class="idx">01</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Each circle alone is common; the overlap is rare, and the small area of the intersection encodes scarcity visually. It flatters ("your odd combination is the moat") and directs ("only compete where all circles hold"). Empty spaces between circles make the mind work, which makes the center reveal land harder.</p></div>
+        <div class="cell"><b>How to build</b><p>Exclusion first: draw each circle and describe life with ONLY that circle (the near-miss diagnosis is the teaching gold). Center revealed and named last. In the full core-model version: the big promise anchors the center, three outcomes are the circles, nine signature moves ring the outside.</p></div>
+        <div class="cell"><b>Outcome</b><p>Positioning clarity and permission to quit. Viewers drop activities that live in one circle only, and can finally say what makes their method theirs.</p></div>
+        <div class="cell"><b>Earning test</b><p>The circles must be independent, and the center needs a qualification test, not a vague noun. If any two circles always come together, they are one circle.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/core-model-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/core-model-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 02 PYRAMID -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><polygon points="32,6 58,44 6,44" fill="none" stroke="#17171B" stroke-width="2.5"/><line x1="16" y1="31" x2="48" y2="31" stroke="#17171B" stroke-width="2"/><line x1="22" y1="18" x2="42" y2="18" stroke="#17171B" stroke-width="2"/><polygon points="32,6 42,18 22,18" fill="#F01621" stroke="#F01621"/></svg></div>
+        <div class="tt"><h3>The Pyramid</h3><div class="def">Stacked layers where each rests on the one below. The geometry of dependency, order and scarcity.</div></div>
+        <div class="idx">02</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Three claims in one shape: hierarchy (top matters most), dependency (remove a base block and the top falls), scarcity (fewer fit higher up). It borrows architectural intuition: foundations first. The famous needs pyramid was never drawn by its author; the shape itself did the remembering.</p></div>
+        <div class="cell"><b>How to build</b><p>Base first, always. Establish each layer as non-negotiable before drawing the next; the build order performs the dependency argument. The killer teaching move is removal: cross out a base layer and let the room watch the top collapse. The value version stacks Fix, Prevent, Improve, Transform with traffic-light scores.</p></div>
+        <div class="cell"><b>Outcome</b><p>Sequencing discipline: "stop working on level three until level one is solid." And diagnosis: everyone can point at the broken layer.</p></div>
+        <div class="cell"><b>Earning test</b><p>True dependency: would the top actually fall without the base? A list stacked for gravitas is the most common pyramid abuse. Five layers maximum.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/value-pyramid-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/value-pyramid-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 03 MOUNTAIN -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><path d="M4 44 L24 12 L32 22 L44 6 L60 44" fill="none" stroke="#17171B" stroke-width="2.5"/><line x1="44" y1="6" x2="44" y2="-2" stroke="#F01621" stroke-width="2"/><circle cx="20" cy="30" r="2.5" fill="#F01621"/><circle cx="30" cy="20" r="2.5" fill="#F01621"/></svg></div>
+        <div class="tt"><h3>The Mountain</h3><div class="def">A climb with a base, camps and a summit. The geometry of the guided journey.</div></div>
+        <div class="idx">03</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>A mountain pre-frames struggle: nobody expects a climb to be flat, so difficulty stops meaning failure. Camps make progress locatable ("you are here"), and the guide's authority is geometric: they have stood higher than the climber. The two-mountain variant (descend into a valley before the second, more meaningful climb) carries reinvention stories.</p></div>
+        <div class="cell"><b>How to build</b><p>Base described in the climber's own words, no marketing language. Then the belief line: the exact belief that must break before the climb starts. Three camps, each a place to stand and look down at progress. The summit is a view, never a certificate: what becomes visible that could not be seen below.</p></div>
+        <div class="cell"><b>Outcome</b><p>Expectation setting plus location. Redrawn every session with a moving dot, it becomes the program's progress bar and its retention device.</p></div>
+        <div class="cell"><b>Earning test</b><p>The camps must be real standing points (a climber could stop there and still be better off), and the summit must show a view, not a credential.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/mountain-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/mountain-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 04 ROADS -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><circle cx="8" cy="25" r="3.5" fill="#17171B"/><path d="M8 25 C 24 22, 38 12, 58 6" fill="none" stroke="#1FA971" stroke-width="2.5"/><line x1="8" y1="25" x2="58" y2="25" stroke="#9E9E9E" stroke-width="2"/><path d="M8 25 C 24 28, 38 38, 58 44" fill="none" stroke="#F01621" stroke-width="2.5"/></svg></div>
+        <div class="tt"><h3>The Three Roads</h3><div class="def">Diverging paths from one dot. The geometry of futures, urgency and honest closes.</div></div>
+        <div class="idx">04</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Time compounds everything, good and bad, and diverging curves make that compounding visible. The grey middle road is held back and revealed only on resistance. The urgency belongs to the client, not the seller: the model does the confronting, the person stays kind.</p></div>
+        <div class="cell"><b>How to build</b><p>Peg in the sand first (rule a line on the past, remove shame). Dot today, no judgement. Green road up with gates at 6, 12, 18 months; red road down, factual not frightening. Punchline: "right now you are as close to the green road as you will ever be." Then the guarantee rule: never the outcome, always the pathway.</p></div>
+        <div class="cell"><b>Outcome</b><p>A decision that feels like the client's own. The strongest closing geometry there is, because it creates urgency without pressure.</p></div>
+        <div class="cell"><b>Earning test</b><p>Every claim on the red road must be evidenced, and milestones on the green road must be numbers you can defend. If the client picks the grey road with open eyes, the model still did its job.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/three-roads-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/three-roads-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 05 RINGS -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><circle cx="32" cy="25" r="21" fill="none" stroke="#D3D1CB" stroke-width="2"/><circle cx="32" cy="25" r="14" fill="none" stroke="#17171B" stroke-width="2.5"/><circle cx="32" cy="25" r="6" fill="#F01621"/></svg></div>
+        <div class="tt"><h3>The Rings</h3><div class="def">Concentric circles around one center. The geometry of priority, intimacy and identity.</div></div>
+        <div class="idx">05</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Inside means essence, outside means surface: the container schema does the arguing. Putting something at the center makes it feel causally prior, which is why the center must actually anchor the rings. The agency variant: your inner ring is what you control, and it grows when you work it, shrinks when you worry.</p></div>
+        <div class="cell"><b>How to build</b><p>Fill from the center outward, but DRAW from the outside in when teaching: outer ring first (what everyone sees), center last with a pause, because the center is the reveal. Then the inversion move: "most people work from the outside in. We work from the center out." Always name what is outside the rings entirely.</p></div>
+        <div class="cell"><b>Outcome</b><p>Identity-level reframe and prioritization by closeness. For offers: a belonging ladder where viewers locate themselves and see the ring inward.</p></div>
+        <div class="cell"><b>Earning test</b><p>Does the center genuinely cause or anchor the outer rings? Four rings maximum, and a rings model with no named outside is a decoration.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/rings-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/rings-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 06 FOUR ROOMS -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><line x1="32" y1="5" x2="32" y2="45" stroke="#17171B" stroke-width="2.5"/><line x1="8" y1="25" x2="56" y2="25" stroke="#17171B" stroke-width="2.5"/><circle cx="44" cy="14" r="4" fill="#F01621"/></svg></div>
+        <div class="tt"><h3>The Four Rooms</h3><div class="def">Two crossed tensions making four territories. The geometry of sorting and deciding.</div></div>
+        <div class="idx">06</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Two tensions at once force a dilemma instead of a ranking. Sorting things into space makes comparison perceptual rather than argumentative, and room nicknames convert positions into verdicts. An empty room reads as opportunity. The disarming entry is built in: "it's just a simple two by two."</p></div>
+        <div class="cell"><b>How to build</b><p>Axes first, poles named so reasonable people could land on either end. Sort REAL items live before naming the rooms, then name them worst to best, target room last with an aspirational nickname. Reveal moves: subdivide the winning room, point at the center, or name the shameful hidden room everyone lives in.</p></div>
+        <div class="cell"><b>Outcome</b><p>Decision. "It's complicated" becomes "there are four situations and each has one move." Also self-diagnosis: people instantly know which room they are standing in.</p></div>
+        <div class="cell"><b>Earning test</b><p>The axes must be independent: if everything lands on the diagonal, one axis is fake. And you must be willing to discuss all four rooms, not just the good one.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/four-rooms-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/four-rooms-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 07 FUNNEL -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><polygon points="8,6 56,6 48,18 16,18" fill="none" stroke="#17171B" stroke-width="2.5"/><polygon points="16,21 48,21 42,33 22,33" fill="none" stroke="#17171B" stroke-width="2.5"/><polygon points="22,36 42,36 38,46 26,46" fill="#F01621" stroke="#F01621"/></svg></div>
+        <div class="tt"><h3>The Funnel</h3><div class="def">A narrowing passage with numbered stages. The geometry of leaks and one-fix focus.</div></div>
+        <div class="idx">07</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Narrowing communicates that loss is structural, not shameful, and the width difference between stages IS the conversion rate made visible. For the operator it converts anxiety into engineering. Know its limit: if customers feed the top again, the true shape is a loop, and the funnel becomes the diagnostic tool inside a flywheel story.</p></div>
+        <div class="cell"><b>How to build</b><p>Wide mouth first with the biggest honest number. Stages named from the traveller's point of view ("they follow me", never "mid-funnel"). Real counts on every stage. Then circle the single biggest drop: the leak. The diagnostic power lives in the deltas, not the stages.</p></div>
+        <div class="cell"><b>Outcome</b><p>One quarter, one leak, one fix. The viewer stops trying to fix everything and repairs the leakiest joint first.</p></div>
+        <div class="cell"><b>Earning test</b><p>Stages must be states of the buyer's mind, widths must roughly match the numbers, and if the after-purchase energy feeds the top, draw the flywheel instead.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/funnel-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/funnel-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 08 FLYWHEEL -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><path d="M32 7 a 18 18 0 1 1 -0.1 0" fill="none" stroke="#17171B" stroke-width="2.5"/><polygon points="32,2 39,10 25,10" fill="#17171B"/><circle cx="32" cy="25" r="6" fill="#F01621"/></svg></div>
+        <div class="tt"><h3>The Flywheel</h3><div class="def">A closed loop where every part drives the next. The geometry of momentum and compounding.</div></div>
+        <div class="idx">08</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>A loop has no terminal step, so the eye keeps traveling, and compounding is felt before it is explained. Circular causality also dissolves blame: no element is first, so the conversation shifts from whose fault to where to push. Spun backwards, the same shape shows the doom loop.</p></div>
+        <div class="cell"><b>How to build</b><p>Four to six parts, clockwise, starting with the one you control most. The test between EVERY adjacent pair: "and then you almost can't help but..." Arrows carry the argument. Narrate two full laps to demonstrate compounding, then reverse it once to show decline. Name the fuel that accumulates in the center, the first push, and the biggest drag.</p></div>
+        <div class="cell"><b>Outcome</b><p>Patience and consistency replace silver-bullet hunting. Effort gets reframed as feeding a wheel that gets easier every turn.</p></div>
+        <div class="cell"><b>Earning test</b><p>The can't-help-but test between every pair, plus a real accumulator in the middle. A to-do list bent into a circle is the most common fake in the whole grammar.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/flywheel-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/flywheel-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 09 ICEBERG -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><line x1="6" y1="18" x2="58" y2="18" stroke="#6B6B74" stroke-width="1.5" stroke-dasharray="4 3"/><polygon points="32,7 40,18 24,18" fill="none" stroke="#17171B" stroke-width="2.5"/><polygon points="24,18 40,18 46,32 36,45 26,45 18,32" fill="none" stroke="#F01621" stroke-width="2.5"/></svg></div>
+        <div class="tt"><h3>The Iceberg</h3><div class="def">A visible tip, a waterline, and mass below. The geometry of hidden depth and meaning.</div></div>
+        <div class="idx">09</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>The waterline separates what gets talked about from what actually moves things, and the shape flatters while it implicates: "what you see is real, and it is the smallest part." Each level down offers more leverage and less visibility. The iceberg always moves in the direction of the base.</p></div>
+        <div class="cell"><b>How to build</b><p>A striptease; order is everything. Waterline first. The tip carries their stated ask in their words. Then one level per reveal, with a pause: the want they would admit to, then the meaning only you can see. Finish with the fork ("shallow or deep?") and the base question ("do you want X, or do you want what X means?").</p></div>
+        <div class="cell"><b>Outcome</b><p>The conversation leaves price and features and lands on meaning, where comparison shopping cannot follow. The signature belief-shift geometry.</p></div>
+        <div class="cell"><b>Earning test</b><p>Each layer must be a deeper CAUSE of the one above, not a synonym, and the base must name something the client has never said out loud.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/iceberg-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/iceberg-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 10 BRIDGE -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><path d="M4 20 L18 20 L18 46 L4 46 Z" fill="none" stroke="#17171B" stroke-width="2.5"/><path d="M46 14 L60 14 L60 46 L46 46 Z" fill="none" stroke="#17171B" stroke-width="2.5"/><line x1="18" y1="21" x2="46" y2="15" stroke="#F01621" stroke-width="2.5"/><line x1="27" y1="19" x2="27" y2="23" stroke="#F01621" stroke-width="2"/><line x1="37" y1="17" x2="37" y2="21" stroke="#F01621" stroke-width="2"/></svg></div>
+        <div class="tt"><h3>The Bridge</h3><div class="def">Two cliffs, a drop, and planks across. The geometry of safe passage through change.</div></div>
+        <div class="idx">10</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>The viewer feels the danger and the rescue in the same glance, which is why a drawn chasm paradoxically creates safety. The size of the gap IS the value of the change. Fear-only versions (set fire to the near cliff) decay fast; pair the drop with a destination worth standing on.</p></div>
+        <div class="cell"><b>How to build</b><p>Near cliff in their verbatim words: diagnosis before prescription. Far cliff slightly higher and concrete. Name the drop once, kindly: what happens to people who jump without a bridge. Then the planks, three stages of your method, each one proven to have held someone before. Add the handrail: the support that never leaves.</p></div>
+        <div class="cell"><b>Outcome</b><p>Change stops feeling like a leap and starts feeling like a walk. Your method's step order gets a visible reason to exist.</p></div>
+        <div class="cell"><b>Earning test</b><p>The far cliff must be measurable, and every plank must answer a real obstacle, not restate your table of contents. A drop nobody believes kills the whole bridge.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/bridge-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/bridge-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 11 LADDER -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><rect x="6" y="36" width="18" height="8" rx="2" fill="none" stroke="#17171B" stroke-width="2.5"/><rect x="20" y="24" width="18" height="8" rx="2" fill="none" stroke="#17171B" stroke-width="2.5"/><rect x="34" y="12" width="18" height="8" rx="2" fill="#F01621" stroke="#F01621"/></svg></div>
+        <div class="tt"><h3>The Ladder</h3><div class="def">Rungs of ascent, each earned by the last. The geometry of countable progress.</div></div>
+        <div class="idx">11</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>Up means more, and rungs make progress countable while keeping the next step small: one rung requires little courage. Each completed rung makes the next feel like continuation instead of a new decision. The same shape also audits thinking: walk a conclusion back down, rung by rung, to the facts it stood on.</p></div>
+        <div class="cell"><b>How to build</b><p>Bottom up. Name each rung and its cost (money, time, or trust), then run the chasm check between every pair: if the step up is too big, a rung is missing. Mark the real entry rung and the stall rung, because the stall is your next offer or your next belief-shift to build.</p></div>
+        <div class="cell"><b>Outcome</b><p>Ascension by design: the climber always sees exactly one small next step, and the builder sees where the ladder loses people.</p></div>
+        <div class="cell"><b>Earning test</b><p>Evenly sized steps and no missing middle rung. A "small next step" that is secretly a chasm breaks trust permanently.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/ladder-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/ladder-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+    <!-- 12 CURVE -->
+    <div class="entry">
+      <div class="top">
+        <div class="glyph"><svg width="64" height="50" viewBox="0 0 64 50"><line x1="8" y1="44" x2="58" y2="44" stroke="#17171B" stroke-width="2"/><path d="M8 36 C 20 36, 24 40, 30 40 C 38 40, 44 20, 58 8" fill="none" stroke="#F01621" stroke-width="2.5"/><circle cx="28" cy="40" r="3" fill="#fff" stroke="#F01621" stroke-width="2"/></svg></div>
+        <div class="tt"><h3>The Curve</h3><div class="def">Flat, dip, knee, climb. The geometry of time, expectation and not quitting too soon.</div></div>
+        <div class="idx">12</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><b>Theory</b><p>A curve converts present pain into a location on a shape that ends well. The vertical axis choice is the argument, so name it honestly. The dip filters out most people, which is exactly why the ones who know the dip is on the map keep walking. Story version: draw the arc WHILE telling a story, then place the listener on it.</p></div>
+        <div class="cell"><b>How to build</b><p>Axes named out loud, then one continuous stroke, narrating the emotion of each segment. Mark "you are here": the moment the shape exists for. Then the two rules: the observable signal of the knee (what to watch for), and the difference between a dip worth crossing and a dead end worth quitting.</p></div>
+        <div class="cell"><b>Outcome</b><p>The strongest persistence device in the grammar. Delays wrong quitting, speeds up right quitting, and forgives the flat start.</p></div>
+        <div class="cell"><b>Earning test</b><p>An honest "you are here", a named y-axis, and a real answer to "how would we know this is a dead end, not a dip?" Without that answer the curve becomes a trap.</p></div>
+      </div>
+      <div class="files"><span>Tools</span><a class="filelink" href="worksheets/curve-worksheet.html">Fillable worksheet</a><a class="filelink" href="pdf/curve-worksheet.pdf">Editable PDF</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Running any worksheet</h2>
+    <p class="sub">The same method fits all twelve. This is how the tools get finished instead of admired.</p>
+    <div class="laws">
+      <div class="law"><div class="n">STEP 1</div><b>Solo, silent, twenty minutes</b><p>First pass alone, timer on, any order. Blank fields are findings, not failures: they show where the thinking is thin. The worked example button exists for the first pass; hide it on the second.</p></div>
+      <div class="law"><div class="n">STEP 2</div><b>Compress last</b><p>Fill the long answers before the short labels. The five-word fields are the prioritization mechanism: if a label will not compress, the idea under it is not clear yet.</p></div>
+      <div class="law"><div class="n">STEP 3</div><b>Share filled sheets, never fill together</b><p>In a group: everyone fills alone, then pairs compare drawings and steal the best labels. A model filled by committee belongs to nobody.</p></div>
+      <div class="law"><div class="n">STEP 4</div><b>Close with a commitment</b><p>End every session on the debrief ladder: what do you notice, what surprised you, what does it mean, what will you do by Friday. The last thing written is a commitment, not a reflection.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  PURELY PERSONAL &middot; THE MODEL LAB &middot; GEOMETRY GRAMMAR CATALOGUE V1 &middot; JULY 2026 &middot; REVISIT WHEN A NEW MODEL WANTS A SHAPE
+</footer>
+
+</body>
+</html>

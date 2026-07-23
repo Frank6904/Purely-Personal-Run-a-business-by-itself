@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Core Model Worksheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--page:#F7F6F3;--card:#FFFFFF;--border:#E5E3DE;--head:#F1F0EC;--ink:#17171B;--dim:#6B6B74;--accent:#F01621;--stroke:#D3D1CB}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Rethink Sans',sans-serif;background:var(--page);color:var(--ink);line-height:1.55;padding:40px 20px 80px}
+  .wrap{max-width:880px;margin:0 auto}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  h1{font-size:38px;font-weight:800;letter-spacing:-.02em}
+  .lede{color:var(--dim);font-size:16px;max-width:560px;margin-top:10px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 8px;align-items:center}
+  .btn{font-family:'Space Mono',monospace;font-size:12px;padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip{display:none;font-family:'Space Mono',monospace;font-size:11px;color:#0B7A43;background:#E7F5EC;border:1px solid #BFE3CC;padding:6px 10px;border-radius:99px}
+  .chip.show{display:inline-block}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-top:24px;overflow:hidden}
+  .card>.hd{background:var(--head);padding:14px 22px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+  .num{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+  .card>.hd b{font-size:16px}
+  .card>.hd span{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);margin-left:auto;text-transform:uppercase;letter-spacing:.08em}
+  .card .bd{padding:20px 22px}
+  .q{margin-bottom:18px}
+  .q:last-child{margin-bottom:0}
+  .q label{display:block;font-weight:700;font-size:14.5px;margin-bottom:4px}
+  .q .hint{font-size:13px;color:var(--dim);margin-bottom:8px}
+  textarea,input[type=text]{width:100%;font-family:'Rethink Sans',sans-serif;font-size:14.5px;color:var(--ink);background:#FCFBF9;border:1px solid var(--border);border-radius:8px;padding:10px 12px;resize:vertical}
+  textarea{min-height:64px}
+  textarea:focus,input:focus{outline:none;border-color:var(--accent)}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:700px){.row{grid-template-columns:1fr}}
+  .grouplabel{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin:14px 0 6px}
+  .diagram{padding:8px 22px 26px}
+  .diagram svg{width:100%;height:auto;display:block}
+  svg text{font-family:'Rethink Sans',sans-serif}
+  svg .mono{font-family:'Space Mono',monospace}
+  .foot{margin-top:36px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+  @media print{
+    body{background:#fff;padding:0}
+    .toolbar,.hint,.chip{display:none!important}
+    .card{break-inside:avoid;border-color:#ccc}
+    textarea,input[type=text]{border:none;background:#fff;padding:4px 0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Purely Personal &middot; The Model Lab</div>
+  <h1>The Core Model</h1>
+  <p class="lede">Your whole method in one seven-minute drawing. The client's big promise sits in the center. Around it, the three outcomes you create every time. Around those, the nine moves you make better than anyone else. Fill the fields and watch it draw itself.</p>
+
+  <div class="toolbar">
+    <span class="chip" id="chip">Answers restored</span>
+    <button class="btn" id="exampleBtn" type="button">Show worked example</button>
+    <button class="btn" id="backupBtn" type="button">Download backup</button>
+    <button class="btn" id="resetBtn" type="button">Reset</button>
+    <button class="btn primary" id="printBtn" type="button">Print / Save as PDF</button>
+  </div>
+
+  <!-- LIVE MODEL -->
+  <div class="card">
+    <div class="hd"><b>Your model, drawing itself</b><span>live</span></div>
+    <div class="diagram">
+      <svg viewBox="0 0 700 470">
+        <!-- outer ring: 9 segments, 3 per outcome -->
+        <g stroke="var(--stroke)" stroke-width="2" fill="none">
+          <path d="M 350 35 A 195 195 0 0 1 470 68"/>
+          <path d="M 484 76 A 195 195 0 0 1 532 187"/>
+          <path d="M 543 205 A 195 195 0 0 1 523 320"/>
+          <path d="M 512 336 A 195 195 0 0 1 424 415"/>
+          <path d="M 406 423 A 195 195 0 0 1 294 423"/>
+          <path d="M 276 415 A 195 195 0 0 1 188 336"/>
+          <path d="M 177 320 A 195 195 0 0 1 157 205"/>
+          <path d="M 168 187 A 195 195 0 0 1 216 76"/>
+          <path d="M 230 68 A 195 195 0 0 1 350 35"/>
+        </g>
+        <!-- accelerator labels -->
+        <g font-size="11.5" fill="#17171B" font-weight="700">
+          <text x="415" y="30" text-anchor="middle"><tspan data-bind="a1a">move 1</tspan></text>
+          <text x="545" y="120" text-anchor="middle"><tspan data-bind="a1b">move 2</tspan></text>
+          <text x="580" y="268" text-anchor="middle"><tspan data-bind="a1c">move 3</tspan></text>
+          <text x="520" y="395" text-anchor="middle"><tspan data-bind="a2a">move 4</tspan></text>
+          <text x="350" y="455" text-anchor="middle"><tspan data-bind="a2b">move 5</tspan></text>
+          <text x="180" y="395" text-anchor="middle"><tspan data-bind="a2c">move 6</tspan></text>
+          <text x="120" y="268" text-anchor="middle"><tspan data-bind="a3a">move 7</tspan></text>
+          <text x="155" y="120" text-anchor="middle"><tspan data-bind="a3b">move 8</tspan></text>
+          <text x="285" y="30" text-anchor="middle"><tspan data-bind="a3c">move 9</tspan></text>
+        </g>
+        <!-- three outcome circles -->
+        <circle cx="350" cy="170" r="92" fill="none" stroke="#17171B" stroke-width="3"/>
+        <circle cx="296" cy="260" r="92" fill="none" stroke="#17171B" stroke-width="3"/>
+        <circle cx="404" cy="260" r="92" fill="none" stroke="#17171B" stroke-width="3"/>
+        <text x="350" y="112" font-size="12" font-weight="800" text-anchor="middle" class="mono">OUTCOME 1</text>
+        <text x="350" y="130" font-size="12" fill="#17171B" font-weight="700" text-anchor="middle"><tspan data-bind="o1Short">always delivered</tspan></text>
+        <text x="248" y="300" font-size="12" font-weight="800" text-anchor="middle" class="mono">OUTCOME 2</text>
+        <text x="248" y="318" font-size="12" fill="#17171B" font-weight="700" text-anchor="middle"><tspan data-bind="o2Short">always delivered</tspan></text>
+        <text x="452" y="300" font-size="12" font-weight="800" text-anchor="middle" class="mono">OUTCOME 3</text>
+        <text x="452" y="318" font-size="12" fill="#17171B" font-weight="700" text-anchor="middle"><tspan data-bind="o3Short">always delivered</tspan></text>
+        <!-- center: the big promise -->
+        <circle cx="350" cy="232" r="46" fill="var(--accent)"/>
+        <text x="350" y="228" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle"><tspan data-bind="promiseShort">the big promise</tspan></text>
+        <text x="350" y="244" font-size="8.5" fill="#fff" text-anchor="middle" class="mono">THE PROMISE</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="card">
+    <div class="hd"><div class="num">1</div><b>Your example</b><span>2 min</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="who">What do you do, and who do you do it for?</label>
+        <div class="hint">One or two sentences. Then the test: do you know more about this, for these people, than anyone else? If not, narrow it until you do.</div>
+        <textarea id="who" placeholder="I help..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="card">
+    <div class="hd"><div class="num">2</div><b>The center: the big promise</b><span>what they want most</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="promise">What does your client want most, in their words?</label>
+        <div class="hint">This anchors the whole model. The client sits geometrically in the middle of your business: everything you draw is built around what THEY want, not what you sell. It is the first thing to leave most sales conversations, and it is where all the value lives.</div>
+        <textarea id="promise" placeholder="More than anything, they want..."></textarea>
+      </div>
+      <div class="q">
+        <label for="promiseShortIn">The promise, compressed to five words or fewer</label>
+        <input type="text" id="promiseShortIn" maxlength="30" placeholder="e.g. a business that runs itself">
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="card">
+    <div class="hd"><div class="num">3</div><b>The three outcomes</b><span>every client, every time</span></div>
+    <div class="bd">
+      <div class="q">
+        <div class="hint" style="margin-bottom:14px">The three big results you create for every client no matter what. Not features, not deliverables: outcomes. When you draw these live, ask after each one: "would this result matter to you?" and wait for the yes. Small agreements at every stroke beat one big yes at the end.</div>
+        <div class="row">
+          <div>
+            <textarea id="o1" placeholder="outcome 1, in full" style="min-height:84px"></textarea>
+            <input type="text" id="o1ShortIn" maxlength="26" placeholder="compressed (5 words max)" style="margin-top:8px">
+          </div>
+          <div>
+            <textarea id="o2" placeholder="outcome 2, in full" style="min-height:84px"></textarea>
+            <input type="text" id="o2ShortIn" maxlength="26" placeholder="compressed (5 words max)" style="margin-top:8px">
+          </div>
+          <div>
+            <textarea id="o3" placeholder="outcome 3, in full" style="min-height:84px"></textarea>
+            <input type="text" id="o3ShortIn" maxlength="26" placeholder="compressed (5 words max)" style="margin-top:8px">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="card">
+    <div class="hd"><div class="num">4</div><b>The nine moves</b><span>3 per outcome</span></div>
+    <div class="bd">
+      <div class="q">
+        <div class="hint" style="margin-bottom:6px">For each outcome, the three things you do better than everybody else that guarantee it happens. These are yours alone: if a competitor does it the same way, it does not belong here. Two or three words each, verb first.</div>
+        <div class="grouplabel">Outcome 1 is guaranteed by</div>
+        <div class="row">
+          <input type="text" id="a1aIn" maxlength="22" placeholder="move 1">
+          <input type="text" id="a1bIn" maxlength="22" placeholder="move 2">
+          <input type="text" id="a1cIn" maxlength="22" placeholder="move 3">
+        </div>
+        <div class="grouplabel">Outcome 2 is guaranteed by</div>
+        <div class="row">
+          <input type="text" id="a2aIn" maxlength="22" placeholder="move 4">
+          <input type="text" id="a2bIn" maxlength="22" placeholder="move 5">
+          <input type="text" id="a2cIn" maxlength="22" placeholder="move 6">
+        </div>
+        <div class="grouplabel">Outcome 3 is guaranteed by</div>
+        <div class="row">
+          <input type="text" id="a3aIn" maxlength="22" placeholder="move 7">
+          <input type="text" id="a3bIn" maxlength="22" placeholder="move 8">
+          <input type="text" id="a3cIn" maxlength="22" placeholder="move 9">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="card">
+    <div class="hd"><div class="num">5</div><b>The choreography</b><span>7 minutes, 4 beats</span></div>
+    <div class="bd">
+      <div class="q">
+        <label for="entry">Entry: your disarming first line</label>
+        <div class="hint">Said as you reach for the pen. Something like "I think I can draw this" watches the whole room relax.</div>
+        <input type="text" id="entry" maxlength="90" placeholder="I think I can draw this...">
+      </div>
+      <div class="q">
+        <label for="punchline">Punchline: the sentence that flips their old belief</label>
+        <div class="hint">Set up, set up, set up, then the reveal. Deliver it right after the center lands, touch the drawing as you say it, then give it three seconds of silence.</div>
+        <textarea id="punchline" placeholder="Here's what nobody in my industry will tell you..."></textarea>
+      </div>
+      <div class="q">
+        <label for="exit">Exit: the bridge to what happens next</label>
+        <div class="hint">One sentence that moves from the model to the next conversation. "Want me to show you what this looks like for your business?" is the shape of it.</div>
+        <input type="text" id="exit" maxlength="120" placeholder="So the only question is...">
+      </div>
+      <div class="q">
+        <label for="colabel">Which part will you let THEM label?</label>
+        <div class="hint">It is hard to disagree with a model you partially built. Pick one part you will co-create live, every time.</div>
+        <input type="text" id="colabel" maxlength="90" placeholder="I'll ask them to name...">
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">PURELY PERSONAL &middot; THE MODEL LAB &middot; YOUR ANSWERS SAVE AUTOMATICALLY IN THIS BROWSER</div>
+</div>
+
+<script>
+(function(){
+  var KEY='pp-core-model-v2';
+  var fields=['who','promise','promiseShortIn','o1','o1ShortIn','o2','o2ShortIn','o3','o3ShortIn','a1aIn','a1bIn','a1cIn','a2aIn','a2bIn','a2cIn','a3aIn','a3bIn','a3cIn','entry','punchline','exit','colabel'];
+  var binds={promiseShortIn:'promiseShort',o1ShortIn:'o1Short',o2ShortIn:'o2Short',o3ShortIn:'o3Short',a1aIn:'a1a',a1bIn:'a1b',a1cIn:'a1c',a2aIn:'a2a',a2bIn:'a2b',a2cIn:'a2c',a3aIn:'a3a',a3bIn:'a3b',a3cIn:'a3c'};
+  var defaults={promiseShort:'the big promise',o1Short:'always delivered',o2Short:'always delivered',o3Short:'always delivered',a1a:'move 1',a1b:'move 2',a1c:'move 3',a2a:'move 4',a2b:'move 5',a2c:'move 6',a3a:'move 7',a3b:'move 8',a3c:'move 9'};
+  var example={who:'I help non-technical coaches and consultants build an AI twin that runs their marketing. Nobody knows more about doing this with zero code, for solo experts, than we do.',promise:'A business that grows every week without them doing every task by hand. They want to lead it, not operate it.',promiseShortIn:'you lead, it runs',o1:'Their AI sounds exactly like them: every post, DM and email in their voice, from their stories.',o1ShortIn:'sounds like you',o2:'Marketing ships every day without them: content, leads and follow-up handled by their AI employees.',o2ShortIn:'ships without you',o3:'They become the person who figures things out: errors become prompts, tools become systems.',o3ShortIn:'you figure it out',a1aIn:'extract voice',a1bIn:'mine the stories',a1cIn:'guard the sound',a2aIn:'build the brain',a2bIn:'hire employees',a2cIn:'set routines',a3aIn:'teach the moves',a3bIn:'break the fear',a3cIn:'never left behind',entry:'You know what, let me just draw this. It is simpler than it sounds.',punchline:'Everyone is trying to learn AI. Nobody is teaching AI to learn THEM. That is the whole difference, right there in the middle.',exit:'Want me to draw what this looks like for your business specifically?',colabel:'The big promise in the center: I ask them "what would you want most?" and write their exact words in.'};
+
+  function el(id){return document.getElementById(id)}
+  function clamp(s,n){s=(s||'').trim();return s.length>n?s.slice(0,n-1)+'…':s}
+  function paint(){
+    Object.keys(binds).forEach(function(id){
+      var span=document.querySelector('[data-bind="'+binds[id]+'"]');
+      span.textContent=clamp(el(id).value, id==='promiseShortIn'?26:22)||defaults[binds[id]];
+    });
+  }
+  function save(){var d={};fields.forEach(function(id){d[id]=el(id).value});try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  function load(){var raw=null;try{raw=localStorage.getItem(KEY)}catch(e){}if(!raw)return false;try{var d=JSON.parse(raw);var any=false;fields.forEach(function(id){if(d[id]){el(id).value=d[id];any=true}});return any}catch(e){return false}}
+  fields.forEach(function(id){['input','change','focusout'].forEach(function(ev){el(id).addEventListener(ev,function(){save();paint()})})});
+  window.addEventListener('beforeunload',save);
+  document.addEventListener('visibilitychange',function(){if(document.hidden)save()});
+  if(load()){el('chip').classList.add('show')}
+  el('exampleBtn').addEventListener('click',function(){fields.forEach(function(id){if(!el(id).value)el(id).value=example[id]||''});save();paint()});
+  el('resetBtn').addEventListener('click',function(){if(!confirm('Clear every answer on this worksheet?'))return;fields.forEach(function(id){el(id).value=''});try{localStorage.removeItem(KEY)}catch(e){}paint()});
+  el('backupBtn').addEventListener('click',function(){
+    var lines=['THE CORE MODEL - WORKSHEET BACKUP',''];
+    fields.forEach(function(id){var q=document.querySelector('label[for="'+id+'"]');lines.push((q?q.textContent:id)+':');lines.push(el(id).value||'(empty)');lines.push('')});
+    var blob=new Blob([lines.join('\n')],{type:'text/plain'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='core-model-backup.txt';a.click();
+  });
+  el('printBtn').addEventListener('click',function(){window.print()});
+  paint();
+})();
+</script>
+</body>
+</html>
