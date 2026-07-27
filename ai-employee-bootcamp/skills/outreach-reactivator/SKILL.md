@@ -25,6 +25,17 @@ Your job before writing anything: figure out which of these three it is.
 
 ---
 
+## ━━ STEP 0, CONTEXT CHECK (always first, never skipped) ━━
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, and sign-off OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Never re-ask for anything the brain already answers. The questions below are about the specific prospect and thread — those still need the user (or the routine's pipeline data).
+
+---
+
 ## ━━ BEFORE YOU BEGIN ━━
 
 Ask the user:
@@ -329,8 +340,20 @@ Read `references/sell-by-chat-framework.md` before writing any message.
 Apply: serving mindset over selling mindset, LVQ rhythm, A→B gap qualification, one question per message, value before every ask, follow-up cadence, micro-commitment booking tactics.
 
 
+## ━━ WHEN RUNNING HEADLESS (routine / scheduled) ━━
+
+No human is in the loop. Never wait for a choice:
+- Answer the "Before you begin" questions from the pipeline data the routine provided (last-contact dates, notes, thread excerpts). Anything unanswerable is stated inline as `DEFAULT — assumed`.
+- Cannot tell Type A from Type B → default to Type B (cold reactivation, the gentler motion) and say so.
+- Never invent what the prospect said. If the original thread is unavailable, write the Soft Return without referencing specifics and flag the gap.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
+
+## ━━ VISUAL OUTPUT ━━
+When producing an HTML version of the reactivation plan, read `references/html-output-templates.md` and `references/design-system.md` first and use the brain's design tokens. Typographic-first, no invented palettes, no clip-art.
+
 ## Voice lock and quality gate (added v4.1.0)
-Read references/voice-dna.md before writing. Write in the user's voice. No fallback.
+Read the brain's Voice DNA (Step 0), falling back to references/voice-dna.md, before writing. Write in the user's voice. No fallback beyond that.
 Before delivering anything, run this gate:
 - Zero em dashes anywhere.
 - No banned words or AI patterns (references/ai-pattern-blacklist.md, references/human-writing-standards.md).

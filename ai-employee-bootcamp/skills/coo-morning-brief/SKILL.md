@@ -1,7 +1,6 @@
 ---
 name: coo-morning-brief
 description: Your standing Chief Operating Officer. Every morning it pulls your tasks from Notion, your calendar from Google Calendar, your inbox priorities from Gmail, surfaces your content to publish today, and flags one key metric, all output as a branded HTML morning brief. Trigger with "run my COO", "morning brief", "what's today look like", "COO morning", or "brief me".
-version: 2.0.0
 category: COO, Operations
 ---
 
@@ -12,7 +11,23 @@ category: COO, Operations
 
 - `references/design-system.md`, brand tokens for HTML output
 - `references/html-output-templates.md`, HTML shell (Template B, daily brief)
-- `references/positioning-[name].md` or `references/voice-dna-[name].md`, brand colors (check here first)
+
+Participant documents (brain, positioning, Voice DNA) live in the WORKSPACE, never in `references/`. Find them via Step 0 below: `BUSINESS-BRAIN.md` first, then `positioning-[name].md` / `voice-dna-[name].md` in the repo root, `/docs`, or `/foundation`.
+
+---
+
+## STEP 0 — CONTEXT CHECK (always first, never skipped)
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, sign-off, and design tokens OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Resolve now and use everywhere below:
+- [NAME] = participant's name (default: Daniel Paul)
+- [SIGN-OFF] = from Voice DNA (default: plain "[NAME]")
+- [CTA-DEFAULT] = primary CTA from the Offer section
+Never ship a default where a participant value exists. Never re-ask for anything the brain already answers.
 
 ---
 
@@ -30,7 +45,7 @@ One brief. Everything that matters. Nothing that doesn't. Output as a visual HTM
 
 ### Step 1, Pull brand colors
 
-Before pulling any data, read the participant's positioning or Voice DNA document for brand color hex codes.
+Before pulling any data, read the design tokens from Step 0's context source: `BUSINESS-BRAIN.md` design tokens first, otherwise the positioning or Voice DNA document found in the workspace (repo root, `/docs`, or `/foundation`), for brand color hex codes.
 
 - **If hex codes found:** use them as `--primary` throughout the HTML output
 - **If no hex codes found:** use Purely Personal red `#E8294C` as default
@@ -128,6 +143,17 @@ If a connector is not connected or returns an error:
 | Google Calendar unavailable | Display "Connect Google Calendar to see your schedule" |
 
 Never fail silently. If data is missing, say so clearly in the relevant card.
+
+---
+
+## WHEN RUNNING HEADLESS (routine / scheduled)
+
+No human is in the loop. Never wait for a choice:
+- Never ask the participant to paste a metric or fill a gap. Render the empty-state card ("Connect Notion to see your tasks", "No metric set, add one to your brain") and flag the gap in the closing line instead.
+- If the content calendar has no entry for today, state "No content scheduled today" — do not ask what to post.
+- Missing data becomes a labeled empty state or a `DEFAULT — assumed` note, never a question.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send), subject "Morning Brief, [Date]", with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
 
 ---
 

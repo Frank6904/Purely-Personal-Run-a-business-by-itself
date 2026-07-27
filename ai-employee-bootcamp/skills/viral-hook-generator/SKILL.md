@@ -10,14 +10,31 @@ description: >
   Part of the Purely Personal 7-skill LinkedIn lead system. by Daniel Paul.
 ---
 
-# Viral Hook Generator, Purely Personal
-# by Daniel Paul · Purely Personal
+# Viral Hook Generator
+# Purely Personal · by Daniel Paul
 
 Read ALL reference files before generating anything:
 - `/references/voice-dna.md`, Daniel's 5 hook archetypes, ICP snapshot, banned words
 - `/references/human-writing-standards.md`, Hook Quality Test (5 points), AI blacklist
 - `/references/copywriting-frameworks.md`, framework context for each hook type
 - `/references/design-system.md`, brand tokens
+
+## STEP 0 — CONTEXT CHECK (always first, never skipped)
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, hook archetypes, and banned words OVERRIDE the Daniel Paul defaults in `/references/voice-dna.md`.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Never ship a default where a participant value exists. Never re-ask for the reader when the brain's ICP already describes them.
+
+## WHEN RUNNING HEADLESS (routine / scheduled)
+
+No human is in the loop. Never wait for a choice:
+- Skip the Step 1 clarifying question. Take the reader from the brain's ICP; if none exists, state the assumed reader in one line labeled `DEFAULT — assumed` and build anyway.
+- The ranking already picks the winner: lead the output with the Rank 1 hook, named as the pick, with the one-sentence "Why #1" reasoning. Do not end with a question.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
 
 One job: the first line that makes stopping feel involuntary.
 

@@ -1,7 +1,6 @@
 ---
 name: cfo-weekly-revenue
 description: Your standing Chief Financial Officer. Every Friday it pulls this week's revenue activity, pipeline movement, and unpaid invoices, then outputs a clean HTML dashboard with revenue totals, pipeline value, and flags for anything needing attention. Trigger with "run my CFO", "weekly revenue", "Friday numbers", "CFO report", or "show me the money".
-version: 2.0.0
 category: CFO, Finance
 ---
 
@@ -12,6 +11,32 @@ category: CFO, Finance
 
 - `references/design-system.md`, brand tokens for HTML output
 - `references/html-output-templates.md`, HTML shell
+
+---
+
+## STEP 0 — CONTEXT CHECK (always first, never skipped)
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, revenue targets, and design tokens OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way. The monthly revenue target usually lives in positioning or the brain's goal section.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Resolve now and use everywhere below:
+- [NAME] = participant's name (default: Daniel Paul)
+- [SIGN-OFF] = from Voice DNA (default: plain "[NAME]")
+- [CTA-DEFAULT] = primary CTA from the Offer section
+Never ship a default where a participant value exists. Never re-ask for anything the brain already answers.
+
+---
+
+## WHEN RUNNING HEADLESS (routine / scheduled)
+
+No human is in the loop. Never wait for a choice:
+- Never ask the participant to paste revenue, pipeline, or invoice figures. Render each metric card with a labeled empty state ("No revenue data found this week, connect Notion or add it to your tracker") and flag the gap.
+- No target found → show the run rate without a progress bar and flag "No monthly target set."
+- Missing data becomes a labeled empty state or a `DEFAULT — assumed` note, never a question. Never invent a number.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send), subject "Weekly Revenue Report, Week of [Date]", with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
 
 ---
 
@@ -67,9 +92,12 @@ Flag any overdue (sent 7+ days ago with no payment).
 Generate a follow-up message for the most overdue invoice.
 
 **Check 4, Monthly Run Rate**
-Week number × weekly revenue = projected monthly revenue.
+Projected monthly revenue = average weekly revenue × 4.33 (weeks per month).
+Use the trailing-4-week average when 4 weeks of data exist (equivalently: trailing-4-week total × 13 / 12). With fewer weeks of data, average what you have, × 4.33, and label it "early-data estimate".
+Never multiply by the week number — that projects a month from a calendar position, not from revenue.
 Compare to last month if data exists.
-Flag if below the participant's stated monthly target (check positioning document for revenue goals).
+Flag if below the participant's stated monthly target (from the brain or positioning document).
+Gate line, printed with the metric: "arithmetic verified against the stated formula" — recompute before printing, and only print it if you actually did.
 
 **Check 5, Attention Flags**
 One or two things that need the participant's action this week:

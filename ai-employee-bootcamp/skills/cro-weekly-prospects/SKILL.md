@@ -1,7 +1,6 @@
 ---
 name: cro-weekly-prospects
 description: Your standing Chief Revenue Officer. Every Monday it runs a complete pipeline cycle, finds 10 ICP-matched LinkedIn prospects using Apify, runs a full intelligence brief on each, writes a personalised 5-message outreach sequence per prospect, reviews the existing pipeline for deals to action, and outputs a full HTML prospect pack. Trigger with "run my CRO", "weekly prospects", "Monday pipeline", "find me leads", or "CRO morning".
-version: 2.0.0
 category: CRO, Sales
 ---
 
@@ -10,8 +9,8 @@ category: CRO, Sales
 
 ## REFERENCE FILES, READ BEFORE EVERY RUN
 
-- `references/voice-dna.md`, participant's voice for DM writing
-- `your Business Brain icp-[name].md`, ideal client profile (pulled from participant's documents)
+- `references/voice-dna.md`, participant's voice for DM writing (overridden by the brain, see Step 0)
+- The participant's ICP, from `BUSINESS-BRAIN.md` or `icp-[name].md` in the workspace (see Step 0), never from `references/`
 - `references/human-writing-standards.md`, writing standards, AI pattern rules
 - `references/ai-pattern-blacklist.md`, patterns to kill before delivery
 - `references/copywriting-frameworks.md`, DM frameworks and opener types
@@ -31,36 +30,72 @@ No generic DMs. No bulk copy-paste. Every sequence is built around a specific hu
 
 ---
 
+## STEP 0 — CONTEXT CHECK (always first, never skipped)
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, sign-off, and design tokens OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Resolve now and use everywhere below:
+- [NAME] = participant's name (default: Daniel Paul)
+- [SIGN-OFF] = from Voice DNA (default: plain "[NAME]")
+- [CTA-DEFAULT] = primary CTA from the Offer section
+Never ship a default where a participant value exists. Never re-ask for anything the brain already answers.
+
+---
+
+## WHEN RUNNING HEADLESS (routine / scheduled)
+
+No human is in the loop. Never wait for a choice:
+- Never ask the participant to describe their ICP, confirm a scrape, or approve a prospect mid-run. Render empty states and flag gaps in the closing note instead.
+- No ICP found → do not invent one. Output the pack shell with an empty prospect list and one flag: "No ICP found. Add BUSINESS-BRAIN.md or icp-[name].md, then rerun."
+- No Apify access → skip to the fallback ladder's ASSUMED path (below) and label every piece of prospect intel accordingly.
+- Below-5 fit scores are flagged in the card, sequences still drafted, decision left to the human reading the pack.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
+
+---
+
 ## HOW TO RUN
 
 ### Step 1, Load the ICP
 
-Read the participant's `icp-[name].md` document. Extract:
+From the Step 0 context source (brain first, then `icp-[name].md`), extract:
 - Target role and seniority
 - Target industry and company size
 - The specific pain point this participant solves
 - What disqualifies a lead
 - Geography preference (if any)
 
-If the ICP document is not found, ask the participant to describe their ideal client before proceeding.
+If no ICP exists anywhere, ask the participant to describe their ideal client before proceeding (interactive mode; headless renders the empty state instead).
 
 ---
 
 ### Step 2, Find 10 qualified prospects via Apify
 
-Use the Apify LinkedIn search connector to find 10 prospects matching the ICP.
+**The actors:** use `apify--linkedin-profile-scraper` or `supreme_coder--linkedin-profile-scraper` via the Apify connector. **Cap: 10 profiles per run.** Never more.
 
-**Search parameters:**
+**Before running, state in one short block:** which actor you are calling, the exact search query, what will be scraped (public profile data, recent posts), and why (to match against the ICP above). No silent scraping.
+
+**Build the search query from the brain's ICP section, never from a generic guess.** The query must encode:
 - Role/title: [from ICP]
 - Industry: [from ICP]
+- Company stage/size: [from ICP]
 - Geography: [from ICP or default to global English-speaking]
-- Company size: [from ICP]
 
-**For each prospect, collect:**
+**ICP filter, applied to results:** any returned profile that fails the ICP criteria (wrong role, wrong industry, wrong stage) is DISCARDED with a one-line note in the pack ("Discarded N results: [reason]"). Never pad the list with off-ICP profiles to reach 10. Eight right prospects beat ten wrong ones.
+
+**For each kept prospect, collect:**
 - Name, title, company
 - LinkedIn URL
 - Recent posts or content (if available via Apify)
 - Any timing signals (new role, hiring posts, growth announcements)
+
+**Fallback ladder (in order, never skip a rung):**
+1. Apify connector available → run the actors as above.
+2. No Apify → ask the participant to paste 10 LinkedIn URLs (or as many as they have) and work from those profiles.
+3. No Apify and no URLs (or headless) → build the pack from the ICP alone and mark every piece of prospect intel `ASSUMED — verify before use`. Never present assumed intel as observed.
 
 ---
 
@@ -78,6 +113,12 @@ Read: Cold / Warm / Hot, based on posting frequency, content tone, engagement pa
 
 **Module 3, Communication Style**
 Map to: Driver / Expressive / Amiable / Analytical, from profile and content signals
+
+**Research honesty for Modules 2 and 3 — non-negotiable:**
+1. Try to read the actual source (scraped posts, headline, activity).
+2. If unreachable: ask the user to paste the profile or recent posts (interactive mode only).
+3. If unavailable: label the reading `DEFAULT — assumed` and say what you assumed.
+Every temperature and style score must cite the observed evidence that earned it (a post, the headline, activity patterns). Never present inference as observation. Never invent posts, engagement patterns, statistics, or quotes. A visible gap is professional; invented intelligence is a liability.
 
 **Module 4, The Human Hook**
 10–14 words maximum. Specific. Impossible to send to anyone else. If you cannot produce a genuine hook from available information, flag it and mark the hook as "needs manual research."

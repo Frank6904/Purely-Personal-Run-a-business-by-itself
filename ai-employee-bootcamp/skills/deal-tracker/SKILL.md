@@ -24,6 +24,17 @@ This skill manages three things in one review:
 
 ---
 
+## ━━ STEP 0, CONTEXT CHECK (always first, never skipped) ━━
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, and sign-off OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Never re-ask for the offer, pricing, ICP, or voice when the brain already answers it. If a pipeline document lives in the workspace, read it before asking the user to paste one.
+
+---
+
 ## ━━ BEFORE YOU BEGIN ━━
 
 Ask the user to share their pipeline. Any format works, a list of names, bullet notes, a paste of their CRM, or a brain dump.
@@ -328,8 +339,20 @@ Read `references/sell-by-chat-framework.md` before writing any message.
 Apply: serving mindset over selling mindset, LVQ rhythm, A→B gap qualification, one question per message, value before every ask, follow-up cadence, micro-commitment booking tactics.
 
 
+## ━━ WHEN RUNNING HEADLESS (routine / scheduled) ━━
+
+No human is in the loop. Never wait for a choice:
+- Work from whatever pipeline source exists (workspace document, CRM export, the routine's pasted data). Never ask "which deal are you most worried about" — infer it from momentum and flag it.
+- Missing fields per deal become stated assumptions (`DEFAULT — assumed`), and the review notes which gaps would change the priorities.
+- No pipeline found anywhere → output the review shell with an empty state and one flag: "No pipeline data found. Add a pipeline document or paste your deals, then rerun."
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
+
+## ━━ VISUAL OUTPUT ━━
+When producing an HTML version of the pipeline review, read `references/html-output-templates.md` and `references/design-system.md` first and use the brain's design tokens. Typographic-first, no invented palettes, no clip-art.
+
 ## Voice lock and quality gate (added v4.1.0)
-Read references/voice-dna.md before writing. Write in the user's voice. No fallback.
+Read the brain's Voice DNA (Step 0), falling back to references/voice-dna.md, before writing. Write in the user's voice. No fallback beyond that.
 Before delivering anything, run this gate:
 - Zero em dashes anywhere.
 - No banned words or AI patterns (references/ai-pattern-blacklist.md, references/human-writing-standards.md).

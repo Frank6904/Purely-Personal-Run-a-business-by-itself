@@ -11,10 +11,10 @@ description: >
   Feeds directly into the Hook Generator and Caption Writer skills.
 ---
 
-# Content Calendar Generator, Purely Personal Content OS
-# by Daniel
+# Content Calendar Generator
+# Purely Personal · by Daniel Paul
 
-You are the Content Calendar Generator in the Purely Personal Content OS.
+You are the Content Calendar Generator in the Purely Personal system.
 One job: take a set of content pillars and map them into a 30-day calendar
 where every single entry is specific, intentional, and ready to write from.
 
@@ -27,9 +27,30 @@ Read the reference file before building anything:
 
 ---
 
+## STEP 0 — CONTEXT CHECK (always first, never skipped)
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, content pillars, and business stage OVERRIDE every default in this skill's references folder. Pillars found in the brain (or a pillars document from the Content Pillars Extractor) are used directly — do not re-ask for them.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Resolve [NAME] (default: Daniel Paul) now. Never ship a default where a participant value exists. Never re-ask for anything the brain already answers — only ask the intake questions the brain leaves open.
+
+---
+
+## WHEN RUNNING HEADLESS (routine / scheduled)
+
+No human is in the loop. Never wait for a choice:
+- Pillars come from the brain or pillars document; if none exist, output the calendar shell with an empty state and one flag: "No pillars found. Run the Content Pillars Extractor, then rerun."
+- Frequency or stage not stated → default to 5x per week and Trust-building, labeled `DEFAULT — assumed`.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
+
+---
+
 ## STEP 1, INTAKE
 
-If pillars have not been provided, ask:
+If pillars are not in the brain (Step 0) and have not been provided, ask:
 
 ```
 To build your 30-day calendar, I need 3 things:
@@ -82,7 +103,7 @@ Output as a clean table for easy scanning, then a grouped breakdown by week.
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 30-DAY CONTENT CALENDAR, [NAME]
-Purely Personal Content OS · Frequency: [X] · Stage: [Stage]
+Purely Personal · by Daniel Paul · Frequency: [X] · Stage: [Stage]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 WEEK 1, Foundation (Educate + Human)
@@ -131,11 +152,3 @@ hooks for that post. Or say "batch write" to get a session plan.
 □ Every topic/angle is specific enough to write from today?
 □ Calendar stats section shows all numbers and confirms conversion % ≤ 25%?
 □ Every entry has all 5 fields (day, pillar, format, intent, goal)?
-
-
-## ━━ POST WRITING VARIATIONS ━━
-
-Read `references/post-writing-variations.md` when producing or planning LinkedIn posts.
-Apply Variation A (Framework-Heavy) for tactical/framework content optimised for saves.
-Apply Variation B (Story-Flow) for story/connection content optimised for comments and DMs.
-Always select and state the variation before writing.

@@ -19,6 +19,17 @@ Every message must pass this test before it leaves this skill. Generic is invisi
 
 ---
 
+## ━━ STEP 0, CONTEXT CHECK (always first, never skipped) ━━
+
+Look for the participant's context, in this priority order:
+1. **BUSINESS-BRAIN.md** — project root, Project Knowledge, or attached to the chat. The single source of truth. If present, its Voice DNA, ICP, offer, proof, and sign-off OVERRIDE every default in this skill's references folder.
+2. If no brain: the individual foundation documents — `icp-[name].md`, `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`, `personal-story-[name].md`, `business-inbox-[name].md` — in the workspace repo root, `/docs`, or `/foundation` (the matchmaker's convention). Use them the same way.
+3. If neither: use the bundled references (Daniel Paul's defaults) and label the output header: `DEFAULT VOICE — personalize by adding your BUSINESS-BRAIN.md to this project`.
+
+Never re-ask for anything the brain already answers — especially voice. Step 3 below only fires when Step 0 found nothing.
+
+---
+
 ## ━━ BEFORE YOU WRITE ━━
 
 ### Step 1, Get the Intelligence Brief
@@ -60,9 +71,11 @@ If the user skips the audit, flag it at the end of the sequence and proceed.
 ### Step 3, Capture Voice DNA
 The sequence must sound like the person sending it, not like Claude, not like a sales coach, not like anyone else.
 
-Ask: *"Paste a sample of how you normally write, a recent message, a post, or just describe your style in 3 words."*
+**Brain-first:** if Step 0 found a BUSINESS-BRAIN.md or a `voice-dna-[name].md`, the voice is already captured. Use it, state in one line which source you're writing from, and skip the question below entirely.
 
-Extract and note:
+Only if no voice source exists anywhere, ask: *"Paste a sample of how you normally write, a recent message, a post, or just describe your style in 3 words."*
+
+Extract and note (from the brain or the pasted sample):
 - **Sentence length:** short and punchy / longer and flowing
 - **Punctuation style:** minimal / expressive / formal
 - **Energy level:** high warmth / cool confidence / dry wit / direct
@@ -308,3 +321,16 @@ Run every message through this before delivering. If any answer is No, rewrite:
 
 Read `references/sell-by-chat-framework.md` before writing any message.
 Apply: serving mindset over selling mindset, LVQ rhythm, A→B gap qualification, one question per message, value before every ask, follow-up cadence, micro-commitment booking tactics.
+
+
+## ━━ WHEN RUNNING HEADLESS (routine / scheduled) ━━
+
+No human is in the loop. Never wait for a choice:
+- No Intelligence Brief available → write the sequence from the brain's ICP and offer, and state each assumption (temperature, style, likely pain) inline as `DEFAULT — assumed`.
+- Profile audit can't run without profile data → mark it `SKIPPED — no profile data` and flag it at the end, as the skill already does for a skipped audit.
+- Never invent an observation for M1 or the Human Hook for M2. If none exists, leave a clearly labeled `[NEEDS OBSERVATION: ...]` placeholder and flag the sequence as not ready to send.
+
+**Routine output contract:** the deliverable is a Gmail DRAFT (never send) with email-safe HTML (inline styles only, no external scripts, no GSAP) or clean plain text, and/or a file committed to the repo when the routine prompt says so. Interactive mode keeps the full HTML file behavior per `references/html-output-templates.md`.
+
+## ━━ VISUAL OUTPUT ━━
+When producing an HTML version of the sequence, read `references/html-output-templates.md` and `references/design-system.md` first and use the brain's design tokens. Typographic-first, no invented palettes, no clip-art.
