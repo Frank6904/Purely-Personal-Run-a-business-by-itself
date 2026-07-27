@@ -1,6 +1,6 @@
 # AI Employee Bootcamp Plugin
 ## Purely Personal · by Daniel Paul
-### Complete Plugin Architecture, Updated June 2026
+### Complete Plugin Architecture · v5.0.0 · Updated July 2026
 
 ---
 
@@ -41,6 +41,8 @@ Layer 5, The Skills (wired to executives)
     /content-calendar-generator  → 30-day posting calendar
     /batch-writing-sequencer     → timed batch writing session plan
     /newsletter-writer           → weekly email in participant's voice
+    /linkedin-carousel-builder   → 8–12 slide document carousel + caption + branded HTML deck
+    /linkedin-cheatsheet-builder → save-worthy one-page cheat sheet (listicle / comparison / do's & don'ts)
 
   CRO skills:
     /outreach-prospector         → full intelligence brief per prospect
@@ -66,6 +68,8 @@ Layer 6, Connectors
 - `content-pillars-extractor`, knows what territory to post in
 - `content-calendar-generator`, knows which slot to fill today
 - `batch-writing-sequencer`, for weekly batch sessions
+- `linkedin-carousel-builder`, turns a post or topic into a document carousel *(new in v5.0.0)*
+- `linkedin-cheatsheet-builder`, builds a save-worthy one-page cheat sheet *(new in v5.0.0)*
 - Hook generator (embedded in CMO skill)
 - Pinned comment writer (embedded in CMO skill)
 
@@ -93,6 +97,12 @@ Layer 6, Connectors
 
 ## THE 5 RECOMMENDED ROUTINES
 
+As of v5.0.0 every skill has a built-in headless mode: when a routine runs it, the skill
+never waits for input, picks its strongest option and states why, marks missing data as a
+labeled empty state or `DEFAULT — assumed` note, and delivers the result as a **Gmail
+DRAFT (never sent)**. Check your Gmail Drafts folder each morning — that's where every
+routine's output lands.
+
 ### Routine 1, COO Morning Brief
 ```
 Name: COO Morning Brief
@@ -100,7 +110,8 @@ Schedule: Weekdays at 7:00 AM
 Instructions: Run the COO morning brief. Pull from Notion, Gmail, and Google Calendar. 
 Output as HTML using my brand colors from my documents. Save the file. 
 Then create a Gmail draft with the subject "Morning Brief – [Today's Date]" 
-and paste the brief content into the email body.
+and paste the brief content into the email body. Run headless: never send the email, 
+never wait for my input — if data is missing, note it in the brief and continue.
 Folder: [My Business Brain] or [GitHub repo]
 ```
 
@@ -111,7 +122,9 @@ Schedule: Weekdays at 7:30 AM
 Instructions: Run the CMO daily post skill. Check my 30-day content calendar for today's 
 slot. Generate 5 hooks, write the post in my voice using my Voice DNA document. 
 Score it on the Invisibility Diagnostic. Then create a Gmail draft with subject 
-"LinkedIn Post Draft – [Today's Date]" containing the scored post.
+"LinkedIn Post Draft – [Today's Date]" containing the scored post. Run headless: 
+pick the strongest hook yourself and say why — never wait for my input, never send, 
+draft only.
 Folder: [My Business Brain] or [GitHub repo]
 ```
 
@@ -122,7 +135,9 @@ Schedule: Mondays at 8:00 AM
 Instructions: Run the CRO weekly prospects skill. Find 10 qualified LinkedIn prospects 
 matching my ICP using Apify. Run a full intelligence brief on each. For each one, draft 
 a personalised 5-message DM sequence in my voice. Output as an HTML prospect pack. 
-Then create a Gmail draft with subject "Weekly Prospect List – [Date]".
+Then create a Gmail draft with subject "Weekly Prospect List – [Date]". Run headless: 
+if Apify is unavailable, degrade honestly to the next-best data source and label it — 
+never invent prospects, never wait for my input, never send, draft only.
 Folder: [My Business Brain] or [GitHub repo]
 ```
 
@@ -133,7 +148,9 @@ Schedule: Fridays at 6:00 PM
 Instructions: Run the CFO weekly revenue skill. Summarise this week's revenue activity, 
 pipeline movement, and any unpaid invoices. Flag anything that needs my attention. 
 Output as a clean HTML dashboard. Then create a Gmail draft with subject 
-"Weekly Revenue Report – [Week of Date]".
+"Weekly Revenue Report – [Week of Date]". Run headless: mark any metric you can't 
+verify as a labeled empty state — never estimate silently, never wait for my input, 
+never send, draft only.
 Folder: [My Business Brain] or [GitHub repo]
 ```
 
@@ -144,7 +161,8 @@ Schedule: Sundays at 9:00 AM
 Instructions: Run the content-pillars-extractor to review my content territories, 
 then run the content-calendar-generator to plan next week's posts. 
 Output as an HTML content calendar. Then create a Gmail draft with subject 
-"Content Plan – Week of [Date]".
+"Content Plan – Week of [Date]". Run headless: never wait for my input — make the 
+strongest call, state the assumption, never send, draft only.
 Folder: [My Business Brain] or [GitHub repo]
 ```
 
@@ -155,10 +173,10 @@ Folder: [My Business Brain] or [GitHub repo]
 | Category | Skills |
 |----------|--------|
 | Executive layer | 5 (CEO, CMO, CRO, COO, CFO) |
-| Content skills | 8 (caption writer, viral hook generator, content strategy, pillars, calendar, batch, repurposer, newsletter) |
+| Content skills | 10 (caption writer, viral hook generator, content strategy, pillars, calendar, batch, repurposer, newsletter, carousel builder, cheatsheet builder) |
 | Sales skills | 7 (prospector, outreach writer, closer, reactivator, deal tracker, call prep, DM writer) |
 | Build tools | 3 (matchmaker, tailor, build-your-own) |
-| **Total** | **23 skills** |
+| **Total** | **25 skills** |
 
 ---
 
@@ -175,8 +193,49 @@ Before running any skill, the participant's Business Brain folder must contain:
 - `messaging-[name].md`
 - `rule1-[name].md`
 - `positioning-[name].md`
-- `inbox-[name].md`
+- `business-inbox-[name].md` (older folders may use `inbox-[name].md` — both are accepted)
+
+A single `BUSINESS-BRAIN.md` is the preferred source and overrides all of the above.
 
 ---
 
-*AI Employee Bootcamp · Purely Personal · by Daniel Paul · Updated June 2026*
+## WHAT CHANGED IN v5.0.0
+
+- Business Brain everywhere — every skill reads `BUSINESS-BRAIN.md` first, foundation docs second, labeled defaults last
+- Evidence gates — skills refuse to invent ICP, proof, or metrics; missing data becomes a labeled empty state
+- Shared visual standards — one design reference fanned into every skill's HTML output
+- 2 new builders — `linkedin-carousel-builder` and `linkedin-cheatsheet-builder`
+- Apify honesty ladder — CRO degrades honestly through data sources and labels which one it used
+- Headless routine mode — scheduled runs never wait for input and deliver as Gmail drafts (never sent)
+- Bug fixes — CFO run-rate math, stub skill upgrades, foundation-file naming consistency
+
+---
+
+## UPDATING YOUR FORK
+
+If you forked this repo during the bootcamp, pull new versions like this:
+
+**Easiest:** on your fork's GitHub page, click **Sync fork → Update branch**.
+
+**Or from the command line:**
+
+```bash
+git remote add upstream https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself
+git fetch upstream
+git merge upstream/main
+```
+
+**Will this overwrite my stuff?** No. Your `BUSINESS-BRAIN.md`, foundation documents, and
+Tailor-fitted skill zips live outside the plugin folders, so updates never touch them. If
+you edited the plugin's skill files directly, expect merge conflicts — keep your
+customisations in Tailor-fitted copies instead and the merge stays clean.
+
+**Installed via the plugin marketplace instead of a fork?** Just run:
+
+```bash
+claude plugin marketplace update purely-personal-marketplace
+```
+
+---
+
+*AI Employee Bootcamp · Purely Personal · by Daniel Paul · v5.0.0 · Updated July 2026*

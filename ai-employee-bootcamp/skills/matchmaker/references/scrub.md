@@ -1,4 +1,4 @@
-<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v2.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.0.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
 # Scrub Reference File
 # Purely Personal — Applied to every skill output before delivery
 # by Daniel Paul · Purely Personal

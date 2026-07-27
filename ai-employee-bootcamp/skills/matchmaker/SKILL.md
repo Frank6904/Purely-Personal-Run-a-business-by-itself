@@ -120,7 +120,7 @@ section; individual documents fill only what the brain leaves blank.
 **Local folder:** The participant's Business Brain folder connected to this Claude Code
 session. Bootcamp participants use the filename convention: `icp-[name].md`,
 `voice-dna-[name].md`, `positioning-[name].md`, `messaging-[name].md`, `rule1-[name].md`,
-`personal-story-[name].md`, `inbox-[name].md`.
+`personal-story-[name].md`, `business-inbox-[name].md` (accept `inbox-[name].md` as an alias).
 
 **GitHub repository:** If the folder is synced to GitHub, the files are in the repo root
 or in a `/docs` or `/foundation` subfolder.
@@ -135,7 +135,7 @@ or in a `/docs` or `/foundation` subfolder.
 | `messaging-[name].md` | Core promise, supporting pillars, proof points |
 | `rule1-[name].md` | One reader, one problem, one promise, one action |
 | `personal-story-[name].md` | Background, origin story, credibility signals |
-| `inbox-[name].md` | Offer details, sales process, client journey |
+| `business-inbox-[name].md` (alias: `inbox-[name].md`) | Offer details, sales process, client journey |
 
 | Document | What it tells you |
 |---|---|

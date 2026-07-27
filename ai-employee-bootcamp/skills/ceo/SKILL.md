@@ -55,6 +55,8 @@ Read the input. Identify which function owns the problem.
 | Revenue, pricing, invoices, cash flow | CFO (`/cfo-weekly-revenue`) |
 | Content strategy, pillars, planning | `/content-strategy` |
 | Writing a post | `/linkedin-caption-writer` |
+| Carousel / document post / slides | `/linkedin-carousel-builder` |
+| Cheat sheet / listicle / comparison one-pager | `/linkedin-cheatsheet-builder` |
 | DM sequences | `/dm-sequence-writer` + `/outreach-prospector` |
 | Sales call prep | `/sales-call-prep` |
 | Newsletter | `/newsletter-writer` |

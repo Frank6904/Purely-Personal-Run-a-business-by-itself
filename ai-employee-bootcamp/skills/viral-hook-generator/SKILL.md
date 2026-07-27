@@ -7,7 +7,7 @@ description: >
   (second line) for each top-3 pick. Trigger on "write hooks", "hook ideas", "hook bank",
   "what hook should I use", "my post isn't performing", "I need a better opening line",
   or any topic where multiple entry angles are needed.
-  Part of the Purely Personal 7-skill LinkedIn lead system. by Daniel Paul.
+  Part of the Purely Personal system by Daniel Paul.
 ---
 
 # Viral Hook Generator

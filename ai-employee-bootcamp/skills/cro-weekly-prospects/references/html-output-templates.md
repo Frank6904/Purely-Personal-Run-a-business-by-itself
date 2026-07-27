@@ -1,4 +1,4 @@
-<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v2.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.0.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
 # HTML Output Templates, AI Employee Bootcamp
 # Purely Personal · by Daniel Paul
 # World-class, self-contained, branded HTML for every executive output.

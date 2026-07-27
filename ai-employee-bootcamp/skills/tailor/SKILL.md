@@ -56,7 +56,7 @@ Do not begin rewriting until all four files are read.
    | `positioning-[name].md` | Unique angle, competitors, saturated topics, market category, brand colors |
    | `messaging-[name].md` | Core promise, proof points, language hierarchy |
    | `rule1-[name].md` | The one reader, one problem, one promise, one action filter |
-   | `inbox-[name].md` | Offer details, price tier, delivery method, sales process |
+   | `business-inbox-[name].md` (alias: `inbox-[name].md`) | Offer details, price tier, delivery method, sales process |
 
 3. Ask the user.
 

@@ -1,4 +1,4 @@
-<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v2.1 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its Design Tokens override this file. -->
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.0.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its Design Tokens override this file. -->
 
 # VISUAL OUTPUT STANDARDS — Purely Personal
 

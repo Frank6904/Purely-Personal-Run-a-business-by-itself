@@ -9,7 +9,7 @@
 **One `BUSINESS-BRAIN.md` · Five AI executives · Zero SaaS subscriptions.**
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-1.0+-e90d41)](https://claude.com/claude-code)
-[![License](https://img.shields.io/badge/license-MIT-1a1a1a)](./LICENSE)
+[![License](https://img.shields.io/badge/license-MIT%20(labs%20proprietary)-1a1a1a)](#license)
 [![Stars](https://img.shields.io/github/stars/danielpaulai/Purely-Personal-Run-a-business-by-itself?style=social)](https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself)
 
 [Install](#install-60-seconds) · [What you get](#what-you-get) · [Quick start](#quick-start) · [Workshop](#the-workshop)
@@ -310,10 +310,14 @@ Yes. Create one `BUSINESS-BRAIN.md` per project. Each project gets its own voice
 <details>
 <summary><strong>How do I update the plugin?</strong></summary>
 
+If you cloned this repo directly:
+
 ```bash
 cd Purely-Personal-Run-a-business-by-itself
 git pull
 ```
+
+If you forked it, see [Updating your fork](#updating-your-fork) below.
 
 </details>
 
@@ -323,6 +327,43 @@ git pull
 Yes. Edit the Voice section of your `BUSINESS-BRAIN.md`. Every skill reads from there.
 
 </details>
+
+---
+
+## Updating your fork
+
+Most cohort members run a **fork** of this repo. When a new version ships, sync it:
+
+**Easiest:** on your fork's GitHub page, click **Sync fork → Update branch**.
+
+**Or from the command line:**
+
+```bash
+git remote add upstream https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself
+git fetch upstream
+git merge upstream/main
+```
+
+**Your customisations are safe.** Your `BUSINESS-BRAIN.md`, foundation documents, and
+Tailor-fitted skill zips live outside the plugin folders — an upstream merge never touches
+them. If you edited plugin skill files directly, expect merge conflicts; keep your
+customisations in Tailor-fitted copies instead and syncing stays conflict-free.
+
+**Installed via the plugin marketplace?** Run:
+
+```bash
+claude plugin marketplace update purely-personal-marketplace
+```
+
+### What changed in v5.0.0
+
+- Business Brain everywhere — every skill reads `BUSINESS-BRAIN.md` first, foundation docs second, labeled defaults last
+- Evidence gates — skills never invent ICP, proof, or metrics; missing data becomes a labeled empty state
+- Shared visual standards — one design reference fanned into every skill's HTML output
+- 2 new builders — `linkedin-carousel-builder` and `linkedin-cheatsheet-builder` (AI Employee Bootcamp)
+- Apify honesty ladder — prospecting degrades honestly through data sources and labels which one it used
+- Headless routine mode — scheduled runs never wait for input and deliver as Gmail drafts (never sent)
+- Bug fixes — CFO run-rate math, stub skill upgrades, foundation-file naming consistency
 
 ---
 
@@ -360,7 +401,10 @@ Built by [Daniel Paul](https://purelypersonal.ai). Voice framework informed by t
 
 ## License
 
-MIT. Use it, fork it, ship it. If this helps you build a business that actually runs without you, [let me know](https://linkedin.com/in/danielpaulai).
+MIT for everything in this repo **except** `the-model-lab/` and `the-stage-lab/`, which are
+proprietary (all rights reserved — see their entries in `.claude-plugin/marketplace.json`).
+Everything else: use it, fork it, ship it. If this helps you build a business that actually
+runs without you, [let me know](https://linkedin.com/in/danielpaulai).
 
 ---
 
