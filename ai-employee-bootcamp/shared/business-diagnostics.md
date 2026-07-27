@@ -1,3 +1,4 @@
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v2.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
 # Business Diagnostics, AI CEO Brain
 # Purely Personal · by Daniel Paul
 # Read when someone describes a symptom and you need to diagnose the root cause

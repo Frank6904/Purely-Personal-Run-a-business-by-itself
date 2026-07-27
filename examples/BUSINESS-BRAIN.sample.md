@@ -1,3 +1,4 @@
+<!-- FILLED SAMPLE — Daniel Paul's own brain, for reference. For the blank template to fill in yourself, see BUSINESS-BRAIN-TEMPLATE.md in this folder. -->
 # BUSINESS BRAIN — Daniel Paul
 
 > Filled Apr 2026. Every engine reads from this file. Edit here, re-run any `/engine` command.
