@@ -401,7 +401,7 @@ Built by [Daniel Paul](https://purelypersonal.ai). Voice framework informed by t
 
 ## License
 
-MIT for everything in this repo **except** `the-model-lab/` and `the-stage-lab/`, which are
+MIT for everything in this repo **except** `the-stage-lab/`, which is
 proprietary (all rights reserved — see their entries in `.claude-plugin/marketplace.json`).
 Everything else: use it, fork it, ship it. If this helps you build a business that actually
 runs without you, [let me know](https://linkedin.com/in/danielpaulai).

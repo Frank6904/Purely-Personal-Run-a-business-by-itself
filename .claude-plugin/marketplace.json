@@ -60,29 +60,6 @@
       "strict": false
     },
     {
-      "name": "the-model-lab",
-      "description": "Turn any expertise into visual selling and teaching models. The Geometry Grammar Catalogue: 12 shapes (overlap, pyramid, mountain, three roads, rings, four rooms, funnel, flywheel, iceberg, bridge, ladder, curve), each with theory, build choreography, an earning test, a self-drawing fillable worksheet with autosave, and an editable PDF. Four guided skills interview you and pre-fill everything: core-model, value-pyramid, mountain, three-roads.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Daniel Paul",
-        "url": "https://purelypersonal.ai"
-      },
-      "homepage": "https://purelypersonal.ai",
-      "repository": "https://github.com/danielpaulai/Purely-Personal-Run-a-business-by-itself",
-      "license": "PROPRIETARY",
-      "category": "productivity",
-      "keywords": [
-        "visual-models",
-        "design-thinking",
-        "sales-models",
-        "teaching-frameworks",
-        "worksheets",
-        "geometry-grammar"
-      ],
-      "source": "./the-model-lab",
-      "strict": false
-    },
-    {
       "name": "the-stage-lab",
       "description": "Visual delivery engine for sessions and stage talks in one likeable Pixar-adjacent art direction: soft-3D characters correctly cast per role (kids, adults, animals), cinematic glows, offline single-file HTML decks. story-slides, live-visual, stage-arc, session-recap. Includes the full Model Lab (4 model skills + worksheets + geometry catalogue) and GSAP blueprint decks.",
       "version": "2.2.0",
