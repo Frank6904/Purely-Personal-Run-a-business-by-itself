@@ -247,6 +247,8 @@ Research: [conducted / not needed] — [source if used]
 One line after delivery:
 `Want a different hook angle, tone, or framework? Tell me which and I'll rewrite.`
 
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## STEP 8 · VISUAL DELIVERY (optional post preview)

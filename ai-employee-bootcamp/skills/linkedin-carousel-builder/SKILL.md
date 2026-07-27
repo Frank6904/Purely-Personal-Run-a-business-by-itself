@@ -313,6 +313,8 @@ Research: [conducted / not needed]
 
 One line after delivering: `Want a text-only version of this idea? Say the word and I'll hand it to linkedin-caption-writer.`
 
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## FINAL GATE · evidence required, then ship

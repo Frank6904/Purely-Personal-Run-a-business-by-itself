@@ -222,3 +222,5 @@ Caption: [char count] chars · Limits: [pass, or the one exception and why]
 
 One line after delivery, per the pipeline:
 `Want the same topic as a full post (linkedin-caption-writer) or a multi-slide carousel (linkedin-carousel-builder)? Say which.`
+
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`

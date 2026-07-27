@@ -130,6 +130,8 @@ Read `references/html-output-templates.md` in full first. Run **STEP 0 brand col
 
 **Fill the template with:** the one-line framing, today's calendar rows, the inbox split (reply / decide / fyi), any overdue item, and one key metric as an animated count-up. Use empty states for any section with no data. Obey every guardrail in the templates file (no em dashes, never auto-send, no invented numbers). The count-up and staggered card reveals are already wired in the shell.
 
+End the brief with the telemetry footer as a small muted line: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## CONNECTOR FAILURE HANDLING

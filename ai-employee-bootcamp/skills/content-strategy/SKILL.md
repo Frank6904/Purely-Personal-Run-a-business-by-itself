@@ -408,6 +408,8 @@ QUICK WINS — START THIS WEEK
 
 Then deliver the Step 9 visual (or name the environment that unlocks it), and point to the next step: feed Week 1's first topic into linkedin-caption-writer.
 
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## FINAL GATE — evidence required, then ship

@@ -48,6 +48,13 @@ check the OUTPUTS for:
 
 Report pass/fail per check. That is the whole deliverable — skip Steps 1–4.
 
+**TELEMETRY READ:** ask for (or check, if attached) the participant's edit-distance
+tracker from `TELEMETRY.md`. If the tracker shows a skill graded REWROTE repeatedly
+(twice in one week, or two weeks running), that skill jumps to the front of the audit
+queue: name it in the report and recommend a full audit plus a /tailor pass before
+auditing anything else. The tracker is real-world failure data; it outranks the
+default audit order.
+
 ### Mode 2 — FULL AUDIT (default)
 
 ### Has the participant attached a skill file to this chat?

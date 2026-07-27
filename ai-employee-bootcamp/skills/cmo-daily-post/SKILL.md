@@ -184,6 +184,8 @@ Read `references/html-output-templates.md` in full first. Run **STEP 0 brand col
 
 **Fill the template with:** the full post rendered in a LinkedIn-style card (line breaks preserved), the chosen hook plus alternates, the publish check, the Invisibility Diagnostic score, and 3 pinned comment options. Obey every guardrail in the templates file (no em dashes, never auto-send, human voice). Card reveals are already wired in the shell.
 
+End the delivery with the telemetry footer as a small muted line: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## NON-NEGOTIABLE RULES

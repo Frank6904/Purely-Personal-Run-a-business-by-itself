@@ -355,6 +355,8 @@ Specific: [✓/✗] · Voice: [✓/✗] · Stakes: [✓/✗] · Surprise: [✓/�
 After delivery, one line only:
 `Want a different hook angle, framework name, or subject line? Tell me which and I'll rewrite.`
 
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## STEP 7 · VISUAL DELIVERY (after the text version above)

@@ -360,6 +360,8 @@ SECTION 9 — POST-CALL FOLLOW-UP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+Then end the delivery with the telemetry footer: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## STEP 4 · VISUAL DELIVERY (the call brief dashboard)

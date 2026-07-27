@@ -169,6 +169,8 @@ Read `references/html-output-templates.md` in full first. Run **STEP 0 brand col
 
 **Fill the template with:** the summary stats (prospects, hot, DMs drafted) as animated count-ups, then one prospect card per lead (name, role, signal, temperature tag, and the drafted first DM). Surface the highest-signal prospect in the closing note. Every DM is a draft for approval, never sent. Obey every guardrail in the templates file (no em dashes, no generic DMs, no invented data).
 
+End the pack with the telemetry footer as a small muted line: `Rate this output when you use it: SHIPPED / EDITED / REWROTE. Log it in your tracker.`
+
 ---
 
 ## NON-NEGOTIABLE RULES

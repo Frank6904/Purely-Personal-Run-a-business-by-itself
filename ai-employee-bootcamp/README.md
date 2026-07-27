@@ -211,6 +211,17 @@ A single `BUSINESS-BRAIN.md` is the preferred source and overrides all of the ab
 
 ---
 
+## PROVING IT WORKS
+
+Two instruments, one loop.
+
+- **`fixtures/`**: canonical test inputs plus mechanical property checklists for the 10 most-used skills, two fixtures each (one clean run, one deliberate hard case). Attach a fixture's persona brain, paste the input, run the skill, check every box, then run /matchmaker in smoke-test mode. No example outputs on purpose: the checklist is the contract, the output stays yours.
+- **`TELEMETRY.md`**: the edit-distance loop. After using any output, log one of three grades: SHIPPED AS-IS, LIGHT EDIT, or REWROTE. One sheet, three grades, one 15-minute weekly review. Skills that keep getting rewritten jump the Matchmaker's audit queue and become the next /tailor targets.
+
+Fixture → smoke test → telemetry → audit queue. That is the proof layer.
+
+---
+
 ## UPDATING YOUR FORK
 
 If you forked this repo during the bootcamp, pull new versions like this:
