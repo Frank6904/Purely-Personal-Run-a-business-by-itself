@@ -132,12 +132,17 @@ Before filling §7, tell the participant this, plainly:
 dashboards, reports, briefs. Whatever goes here is what every visual will wear.**
 
 Then:
-1. Ask for their real brand hex codes (primary first, then accents), plus fonts
-   if they have them.
-2. **Validate the format.** A hex code matches `#` plus 3 or 6 hex characters
+1. **Extract before you ask.** Search the foundation documents first: the
+   positioning document and Voice DNA carry brand hex codes when they were built
+   properly, and any brand or visual identity document counts too. Found codes
+   get CONFIRMED, not re-asked: "Your positioning doc says primary #1A6B54.
+   Using it. Correct?"
+2. Only if no document holds a color: ask for their real brand hex codes
+   (primary first, then accents), plus fonts if they have them.
+3. **Validate the format.** A hex code matches `#` plus 3 or 6 hex characters
    (e.g. `#E8294C`). If what they paste does not validate, show them the corrected
    form or ask again. Never write an invalid code into the brain.
-3. **No brand colors yet?** Default to Purely Personal red `#E8294C` and write
+4. **No brand colors anywhere?** Default to Purely Personal red `#E8294C` and write
    this note next to it in §7: `<!-- default Purely Personal red, every visual
    will carry this color until you update it here -->`. Say the same to the user
    in one line so the default is a decision, not a surprise.
