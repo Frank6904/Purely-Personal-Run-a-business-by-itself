@@ -176,13 +176,19 @@ Delivery format:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PURELY PERSONAL · YOUR BUSINESS BRAIN
-by Daniel Paul
+[PARTICIPANT NAME]'S BUSINESS BRAIN
+[Business name]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Sections filled: [N]/8 · Gaps skipped: [list, or "none"]
 Sources used: [document names]
 Brand color: [hex, and whether it is theirs or the labeled default]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+built with the Purely Personal system
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The participant's name is ALWAYS the headline. Purely Personal appears only in
+the single credit line at the bottom, never above their name. Their brain, their
+name on the door.
 ```
 
 Then exactly two lines:
