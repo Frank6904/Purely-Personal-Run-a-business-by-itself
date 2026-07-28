@@ -355,6 +355,13 @@ customisations in Tailor-fitted copies instead and syncing stays conflict-free.
 claude plugin marketplace update purely-personal-marketplace
 ```
 
+### What changed in v5.1.0
+
+- `/build-my-business-brain` (AI Employee Bootcamp): fills the Business Brain template from your foundation documents, quotes real numbers, interviews you one question at a time for the gaps, and locks your brand hex codes into §7
+- Day 2 pair tailoring: the Tailor defaults to fitting `linkedin-caption-writer` + `linkedin-carousel-builder` together in one run after a Matchmaker audit
+- Matchmaker audits any skill, including third-party skills, and chains automatically: audit → tailor → smoke test in one conversation
+- Test fixtures + telemetry: `fixtures/` checklists for the 10 most-used skills and the `TELEMETRY.md` edit-distance loop
+
 ### What changed in v5.0.0
 
 - Business Brain everywhere — every skill reads `BUSINESS-BRAIN.md` first, foundation docs second, labeled defaults last

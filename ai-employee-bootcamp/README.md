@@ -1,6 +1,6 @@
 # AI Employee Bootcamp Plugin
 ## Purely Personal · by Daniel Paul
-### Complete Plugin Architecture · v5.0.0 · Updated July 2026
+### Complete Plugin Architecture · v5.1.0 · Updated July 2026
 
 ---
 
@@ -17,6 +17,7 @@ Install once. Your AI team runs on a schedule, drafting posts, finding prospects
 ```
 Layer 1, Your Brain
   Your Business Brain folder (7 foundation documents)
+  /build-my-business-brain → fills BUSINESS-BRAIN.md from your foundation documents
   Everything downstream reads from this.
 
 Layer 2, The Build Room
@@ -172,11 +173,12 @@ Folder: [My Business Brain] or [GitHub repo]
 
 | Category | Skills |
 |----------|--------|
+| Foundation | 1 (build-my-business-brain) |
 | Executive layer | 5 (CEO, CMO, CRO, COO, CFO) |
 | Content skills | 10 (caption writer, viral hook generator, content strategy, pillars, calendar, batch, repurposer, newsletter, carousel builder, cheatsheet builder) |
 | Sales skills | 7 (prospector, outreach writer, closer, reactivator, deal tracker, call prep, DM writer) |
 | Build tools | 3 (matchmaker, tailor, build-your-own) |
-| **Total** | **25 skills** |
+| **Total** | **26 skills** |
 
 ---
 
@@ -198,6 +200,13 @@ Before running any skill, the participant's Business Brain folder must contain:
 A single `BUSINESS-BRAIN.md` is the preferred source and overrides all of the above.
 
 ---
+
+## WHAT CHANGED IN v5.1.0
+
+- `/build-my-business-brain` skill: reads every foundation document it can find, fills the Business Brain template with quoted real numbers and phrases, interviews you one question at a time for the gaps, and locks your brand hex codes into §7 (with a labeled default if you have none yet)
+- Day 2 pair tailoring: the Tailor's default after a Matchmaker audit is `linkedin-caption-writer` + `linkedin-carousel-builder` fitted together in one run, since they share the same voice and brain work
+- Matchmaker audits any skill, including third-party skills bought or downloaded anywhere, and every full-audit report now closes with an automatic handoff: audit → tailor → smoke test in one conversation
+- Test fixtures + telemetry: `fixtures/` checklists for the 10 most-used skills and the `TELEMETRY.md` edit-distance loop (landed just before this release)
 
 ## WHAT CHANGED IN v5.0.0
 
@@ -249,4 +258,4 @@ claude plugin marketplace update purely-personal-marketplace
 
 ---
 
-*AI Employee Bootcamp · Purely Personal · by Daniel Paul · v5.0.0 · Updated July 2026*
+*AI Employee Bootcamp · Purely Personal · by Daniel Paul · v5.1.0 · Updated July 2026*

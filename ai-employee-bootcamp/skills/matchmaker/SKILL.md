@@ -1,18 +1,19 @@
 ---
 name: matchmaker
 description: >
-  Audits any skill — the 5 Purely Personal starters or any custom skill — against the
-  participant's BUSINESS-BRAIN.md or foundation documents, producing a skill-by-skill
-  7-dimension gap report with severity ratings, a Top 5 priority list, and a Tailor
-  Briefing. Also smoke-tests fitted skills the Tailor delivers. ALWAYS use this skill
-  when the user says "run the matchmaker", "audit my skills", "audit this skill", "what
-  needs to change in my skills", "find the gaps", "matchmaker", "analyse my skills",
-  "smoke test this skill", or wants to know how well a skill fits their business — and
-  at the start of any Day 2 bootcamp session with foundation documents present. When a
-  skill file is attached, trigger ONLY if the user asks for an audit or customisation —
-  not on every attachment. Do not critique or gap-check a skill ad hoc without running
-  this audit. NOT for rewriting skills — that's the tailor; hand it the Tailor Briefing
-  this audit produces. Part of the Purely Personal system by Daniel Paul.
+  Audits ANY skill — the 5 Purely Personal starters, custom skills, or third-party
+  skills bought or downloaded anywhere — against the participant's BUSINESS-BRAIN.md
+  or foundation documents, producing a 7-dimension gap report with severity ratings,
+  a Top 5 list, and a Tailor Briefing. Also smoke-tests fitted skills the Tailor
+  delivers. ALWAYS use this skill when the user says "run the matchmaker", "audit my
+  skills", "audit this skill", "audit [skill name or attached skill] against my
+  Business Brain", "find the gaps", "matchmaker", "smoke test this skill", or
+  wants to know how well a skill fits their business — and at the
+  start of any Day 2 bootcamp session with foundation documents present. When a
+  skill file is attached, trigger ONLY if the user asks for an audit or
+  customisation — not on every attachment. Do not gap-check a skill ad hoc without
+  this audit. NOT for rewriting skills — that's the tailor; hand it the Tailor
+  Briefing this audit produces. Part of the Purely Personal system by Daniel Paul.
 ---
 
 # Matchmaker — Purely Personal Bootcamp
@@ -29,6 +30,11 @@ You do not rewrite anything. The Tailor does that. You diagnose.
 ## STEP 0 — DETERMINE MODE AND WHAT TO AUDIT
 
 Before reading any reference files, follow this decision tree exactly.
+
+**The audit scope is universal.** This skill audits ANY skill: the 5 Purely
+Personal starters, skills the participant built themselves, and third-party
+skills they bought or downloaded anywhere. The generic prompt form always works:
+"audit [skill name or attached skill] against my Business Brain".
 
 **Environment note:** in Claude Code, check installed skills by listing the skills
 directory; in claude.ai, ask the user to confirm which starters they installed —
@@ -47,6 +53,10 @@ check the OUTPUTS for:
 - missing [SIGN-OFF]
 
 Report pass/fail per check. That is the whole deliverable — skip Steps 1–4.
+
+The Tailor may invoke this smoke test itself, immediately after delivering a
+fitted skill, without the user asking. That is the intended chain: audit, then
+tailor, then smoke test, all in one conversation.
 
 **TELEMETRY READ:** ask for (or check, if attached) the participant's edit-distance
 tracker from `TELEMETRY.md`. If the tracker shows a skill graded REWROTE repeatedly
@@ -331,6 +341,20 @@ OUTPUT RULES: [Formatting preferences — character counts, CTA style, etc.]
 ICP AWARENESS LEVEL: [Unaware / Problem Aware / Solution Aware / Product Aware / Most Aware]
 BRAND COLORS: [Hex codes from documents, or "use Purely Personal defaults"]
 ```
+
+---
+
+### HANDOFF (the report's closing line, always last)
+
+Every full-audit report closes with this one line, after the Tailor Briefing:
+
+```
+Say "run the tailor" and I will fit [the audited skill / the Day 2 pair] now.
+After it delivers, I will smoke test it automatically.
+```
+
+Name the actual target: the audited skill if one skill was audited, or the Day 2
+pair (linkedin-caption-writer + linkedin-carousel-builder) after a default audit.
 
 ---
 

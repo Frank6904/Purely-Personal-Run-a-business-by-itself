@@ -94,10 +94,16 @@ TOPICS TO AVOID, PROOF POINTS, OUTPUT RULES
 
 One zip file per skill. Always. No exceptions.
 
-**Session budget — one to two skills per run is the quality standard.**
-If asked for all five, deliver the two highest-priority (per the Matchmaker's Top 5)
-and offer to continue in the next message — never thin out quality to fit five in
-one pass.
+**Session budget: one to two skills per run is the quality standard.**
+
+The standard Day 2 pair is **linkedin-caption-writer + linkedin-carousel-builder,
+fitted TOGETHER in one run**. They share the same voice and brain work, so fitting
+them as a pair costs almost nothing extra and ships a matched set. When the user
+runs the tailor after a matchmaker audit without naming skills, default to this pair.
+
+Otherwise the cap holds: if asked for all five, deliver the two highest-priority
+(per the Matchmaker's Top 5) and offer to continue in the next message. Never thin
+out quality to fit five in one pass.
 
 ---
 
