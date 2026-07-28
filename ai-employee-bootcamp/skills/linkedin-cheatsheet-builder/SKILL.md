@@ -20,6 +20,7 @@ Read the shared references before writing a single word:
 - `/references/human-writing-standards.md` · Invisibility Diagnostic, AI blacklist, hook test
 - `/references/design-system.md` · brand tokens for the rendered one-pager
 - `/references/visual-standards.md` · environment detection, the HTML+GSAP stack, motion and design rules, the Cheat sheet shape, and the visual quality gate. Step 5 depends on it.
+- `/references/html-output-templates.md` · the SINGLE-CANVAS CHEATSHEET TEMPLATE (canonical). Step 5 starts from it, never from a blank file.
 
 Load exactly ONE format reference after the router picks the format in Step 1:
 - `/references/cheatsheet-listicle.md` · 6 main points x 4 takeaways
@@ -169,12 +170,20 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 - Visual gate 3: readable with JS off; prints clean at 1080 x 1350 with animation off in print media.
 - Visual gate 4: no banned visual elements (the NEVER list in visual-standards.md).
 - Visual gate 5: the Rule of the Room honestly applied. Would the participant show this to someone?
+- Output uses the canonical template structure. A from-scratch layout fails the gate.
 
 ---
 
 ## STEP 5 · RENDER THE ONE-PAGER
 
 The copy block in the Delivery Format is ALWAYS delivered: it is the designer handoff and the editable source of truth. The rendered sheet sits beside it. Follow `/references/visual-standards.md` for environment detection, motion, and design rules.
+
+**Template first, on any model:** start from the SINGLE-CANVAS CHEATSHEET TEMPLATE in
+`references/html-output-templates.md`. Swap the `:root` tokens from the brain (§7, else
+`/references/design-system.md`), fill the copy slots, pick pattern A (numbered chip cards)
+or pattern B (designed table) per the routed format, change nothing structural. Rendering
+is template execution, not design improvisation. If you feel the urge to redesign the
+layout, that is the signal you are off-template.
 
 **Environment detection first:**
 1. **claude.ai chat**: render the sheet as an HTML artifact. GSAP from cdnjs (`https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js`) for the optional entrance only.
@@ -213,6 +222,7 @@ CAPTION · paste into LinkedIn with the image
 FILE
 [path to rendered HTML or artifact + "print to PDF at 100% scale"] or
 [No visual output in this environment. The copy block above is the designer handoff.]
+Preview blank? Use Show in folder and double-click the file to open it in your browser.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Format: [format · sub-format] · Intent: [intent] · Score: [N]/4

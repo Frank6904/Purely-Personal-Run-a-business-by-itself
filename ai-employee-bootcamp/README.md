@@ -1,6 +1,6 @@
 # AI Employee Bootcamp Plugin
 ## Purely Personal · by Daniel Paul
-### Complete Plugin Architecture · v5.1.0 · Updated July 2026
+### Complete Plugin Architecture · v5.1.1 · Updated July 2026
 
 ---
 
@@ -201,6 +201,10 @@ A single `BUSINESS-BRAIN.md` is the preferred source and overrides all of the ab
 
 ---
 
+## WHAT CHANGED IN v5.1.1
+
+- v5.1.1: canonical visual templates, model-proof rendering, Cowork preview guidance
+
 ## WHAT CHANGED IN v5.1.0
 
 - `/build-my-business-brain` skill: reads every foundation document it can find, fills the Business Brain template with quoted real numbers and phrases, interviews you one question at a time for the gaps, and locks your brand hex codes into §7 (with a labeled default if you have none yet)
@@ -258,4 +262,4 @@ claude plugin marketplace update purely-personal-marketplace
 
 ---
 
-*AI Employee Bootcamp · Purely Personal · by Daniel Paul · v5.1.0 · Updated July 2026*
+*AI Employee Bootcamp · Purely Personal · by Daniel Paul · v5.1.1 · Updated July 2026*

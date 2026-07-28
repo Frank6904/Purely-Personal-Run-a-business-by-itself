@@ -236,6 +236,9 @@ back to vague authority. Minor: proof present but missing timeframes or client t
 **6 — Formatting & Output Rules**
 Does the skill know the participant's formatting and structural preferences?
 Check: character limits, line break rules, CTA format, emoji policy, platform rules.
+Visual skills: does the skill render from the canonical templates in
+html-output-templates.md with the participant's tokens? Freeform rendering or a
+missing template reference rates Major.
 Severity — Critical: the output format breaks the platform (over its character limit,
 wrong medium) — nothing is publishable as delivered. Major: no CTA format or
 structural rules — every output needs manual reformatting. Minor: rules present but

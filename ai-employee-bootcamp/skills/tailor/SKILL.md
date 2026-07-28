@@ -147,6 +147,13 @@ discovery-call-framework.md, output-examples.md), and visual-standards.md.
 Rewrite them only where they contain participant-specific context; never drop them.
 A fitted skill with fewer reference files than its original is a build failure.
 
+**Visual skills (carousel, cheatsheet, any skill with a render step):** the fitted
+skill MUST keep the canonical template references intact, html-output-templates.md
+and visual-standards.md carry forward verbatim except for token values. Carry the
+brain's §7 tokens into the template's `:root` block. The fitted skill's render step
+points at the canonical template, never at freeform design. A fitted render step
+that designs from scratch is a build failure.
+
 **Injection Point 4 — Voice Lock**
 Replace the generic Voice DNA check with a hardcoded Voice Lock.
 The participant's voice is the default. No fallback. No override.
@@ -320,6 +327,7 @@ Build and deliver each skill completely before starting the next.
 - Ask intake questions the Tailor Briefing already answered
 - Output skill content as markdown blocks in the chat
 - Produce a skill another participant could install without editing
+- Strip or weaken the canonical visual templates during a rewrite
 
 ---
 

@@ -328,6 +328,275 @@ File name: `ceo-brain-deepdive-[topic].html`
 
 ---
 
+## CAROUSEL DECK TEMPLATE (canonical)
+
+**Renders START from this template. Swap tokens, write copy into the slots. Never design a deck from scratch.**
+
+This is the client-approved quality bar for LinkedIn document carousels, captured as a template. It is the render step for `linkedin-carousel-builder` and for every fitted copy of it. The Rethink Sans guardrail above applies to executive documents; this deck's font is a token, set from the brain's §7 (default: Poppins per `design-system.md`), always with a system fallback.
+
+How it works:
+- **Tokens live in ONE `:root` block.** Brand color, ink, paper, muted, hairline, canvas, and the font stack. The tailor or the brain's §7 swaps this block and nothing else. Every slide recolors and refonts from these seven values.
+- **One visual system.** Every slide shares the same background, chrome (wordmark tag + slide number), accent bar, and footer. Cover and CTA intensify with type size only.
+- **Slide frame is 540 x 675 px** (LinkedIn 4:5, which is 1080 x 1350 at 50% scale; type is vector so the printed PDF is crisp). `@page { size: 540px 675px }` makes print-to-PDF produce the upload-ready document.
+- **Screen mode** is scroll-snap; **print mode** is one slide per page with all animation off.
+- **`.el` is the reveal class.** Every element that animates carries `class="el"` (or `el` added to its class list) and its FINAL values in the markup. GSAP animates with `gsap.from()` inside an `if (window.gsap)` guard, so a blocked CDN still shows a complete, static, perfect deck.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[DECK TITLE] · [CLIENT NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKEN BLOCK · the ONLY part that changes per client. Values from the brain's §7. ── */
+  :root{
+    --primary:#E8294C;   /* brand accent, one color does all the work */
+    --ink:#0A0A0A;       /* near-black text */
+    --paper:#F6F5F2;     /* slide background */
+    --muted:#5F5D57;     /* secondary text */
+    --line:#E1DFD8;      /* hairlines */
+    --canvas:#DDDBD5;    /* page behind the slides, screen only */
+    --font:'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; /* brand font + system fallback, always */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--canvas);font-family:var(--font);color:var(--ink)}
+
+  /* ── Screen mode: slide-snap vertical scrolling ── */
+  .deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slidewrap{min-height:100vh;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;padding:24px 0}
+
+  /* ── ONE visual system: identical frame, chrome, footer on every slide ── */
+  .slide{width:540px;max-width:100%;height:675px;background:var(--paper);display:flex;flex-direction:column;padding:26px 30px 0;box-shadow:0 10px 40px rgba(10,10,10,.14);overflow:hidden;position:relative}
+  .chrome{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:10px}
+  .wordmark{font-weight:800;font-size:13px;letter-spacing:.34em;text-transform:uppercase}
+  .snum{font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--muted)}
+  .body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:8px 0}
+
+  /* display type scale */
+  .kick{font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--primary)}
+  .hl{font-size:clamp(24px,5.7vw,31px);font-weight:800;line-height:1.14;letter-spacing:-.015em}
+  .hl .u{border-bottom:4px solid var(--primary);padding-bottom:1px}
+  .sup{font-size:clamp(14px,3vw,16.5px);line-height:1.55;font-weight:400;max-width:98%}
+  .sup + .sup{margin-top:-6px}
+  .hero{padding:6px 0}
+  .heroline{height:3px;background:var(--primary);width:100%;margin-top:10px}
+  .bignum{font-size:clamp(60px,16vw,88px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--primary)}
+  .strike{color:var(--ink);opacity:.45;text-decoration:line-through;text-decoration-thickness:4px;font-weight:800}
+  .herorow{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .herosmall{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:8px}
+  .ticks{display:flex;gap:10px;margin-top:12px}
+  .ticks i{display:block;width:44px;height:8px;background:var(--primary);opacity:.35}
+  .ticks i:first-child{opacity:1}
+  .split{display:flex;gap:16px;margin-top:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .split .good{color:var(--primary)}
+  .split .bad{color:var(--muted)}
+  .foot{border-top:1px solid var(--line);padding:10px 0 14px;display:flex;justify-content:space-between;align-items:center}
+  .foot .credit{font-size:9.5px;color:var(--muted);letter-spacing:.04em}
+  .foot .credit b{color:var(--ink);font-weight:600}
+  .dots{display:flex;gap:4px}
+  .dots i{width:5px;height:5px;border-radius:50%;background:var(--line);display:block}
+  .dots i.on{background:var(--primary)}
+
+  /* Cover and CTA intensify the system with type size only */
+  .cover .hl{font-size:clamp(38px,9.6vw,52px);line-height:1.06}
+  .cover .bignum{font-size:clamp(96px,27vw,150px)}
+  .cover .metrics{display:flex;flex-direction:column;gap:5px;margin-top:2px}
+  .cover .metrics span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+  .cover .metrics span::before{content:"";display:inline-block;width:16px;height:2px;background:var(--primary);margin-right:10px;vertical-align:middle}
+  .cover .subtitle{font-size:18px;line-height:1.5;font-weight:500;color:var(--muted);max-width:95%}
+  .cta .follow{font-size:clamp(32px,8vw,44px);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+  .cta .follow small{display:block;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px}
+
+  /* ── Print mode: one 540x675 frame per page, all animation off ── */
+  @page{size:540px 675px;margin:0}
+  @media print{
+    html,body{background:var(--paper)}
+    .deck{height:auto;overflow:visible;scroll-snap-type:none}
+    .slidewrap{min-height:0;padding:0;display:block;page-break-after:always}
+    .slide{box-shadow:none;margin:0}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 · COVER -->
+  <div class="slidewrap"><section class="slide cover">
+    <div class="chrome"><span class="wordmark">[BRAND]</span><span class="snum">1 / [N]</span></div>
+    <div class="body">
+      <div class="kick el">[KICKER]</div>
+      <div class="herorow el"><span class="bignum">[BIG NUMBER]</span>
+        <div class="metrics"><span>[ITEM]</span><span>[ITEM]</span><span>[ITEM]</span></div>
+      </div>
+      <h1 class="hl el">[COVER TITLE, 4 to 8 words]</h1>
+      <p class="subtitle el">[SUBTITLE, 8 to 15 words]</p>
+    </div>
+    <div class="foot"><span class="credit"><b>[NAME]</b> · built with the Purely Personal system</span><span class="dots"><i class="on"></i><!-- one <i> per slide, .on marks this slide --></span></div>
+  </section></div>
+
+  <!-- SLIDE 2..N-1 · BODY (repeat one .slidewrap per slide; hero block optional per the slide's Visual idea: .bignum, .strike, .heroline, .ticks, or .split) -->
+  <div class="slidewrap"><section class="slide">
+    <div class="chrome"><span class="wordmark">[BRAND]</span><span class="snum">2 / [N]</span></div>
+    <div class="body">
+      <div class="kick el">[KICKER, optional]</div>
+      <h2 class="hl el">[HEADLINE, 8 words max, key phrase may take <span class="u">the underline</span>]</h2>
+      <div class="hero el"><span class="bignum">[HERO STAT]</span><div class="heroline"></div></div>
+      <p class="sup el">[SUPPORT LINE 1]</p>
+      <p class="sup el">[SUPPORT LINE 2]</p>
+    </div>
+    <div class="foot"><span class="credit"><b>[NAME]</b> · built with the Purely Personal system</span><span class="dots"><i></i><i class="on"></i></span></div>
+  </section></div>
+
+  <!-- SLIDE N · CTA -->
+  <div class="slidewrap"><section class="slide cta">
+    <div class="chrome"><span class="wordmark">[BRAND]</span><span class="snum">[N] / [N]</span></div>
+    <div class="body">
+      <h2 class="hl el">[CTA HEADLINE]</h2>
+      <div class="follow el"><small>One action</small>[THE ONE ACTION]<div class="heroline"></div></div>
+      <p class="sup el">[CTA SUPPORT, matches the caption's CTA exactly]</p>
+    </div>
+    <div class="foot"><span class="credit"><b>[NAME]</b> · built with the Purely Personal system</span><span class="dots"><i></i><i class="on"></i></span></div>
+  </section></div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  // Markup is fully rendered by default. Entrances are gsap.from() only, guarded:
+  // with the CDN blocked the deck is simply static and complete.
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    var deck = document.getElementById('deck');
+    document.querySelectorAll('.slide').forEach(function(slide){
+      gsap.from(slide.querySelectorAll('.el'), {
+        opacity:0, y:28, duration:0.75, stagger:0.09, ease:'power3.out',
+        scrollTrigger:{ trigger: slide, scroller: deck, start: 'top 70%', once: true }
+      });
+    });
+  }
+</script>
+</body>
+</html>
+```
+
+Filling rules:
+- One `.slidewrap` block per slide, in order. The `.dots` row carries one `<i>` per slide with `.on` marking the current slide.
+- Copy goes into the slots character-identical to the approved slide copy. No redesign edits, no new CSS classes, no layout inventions.
+- Allowed variation per slide: which hero pattern the `.hero` block uses (`.bignum`, `.strike` before/after pair, `.heroline`, `.ticks`, `.split`), matching that slide's Visual idea. Nothing else varies.
+- Delivery line, always: "Preview blank? Use Show in folder and double-click the file to open it in your browser."
+
+---
+
+## SINGLE-CANVAS CHEATSHEET TEMPLATE
+
+**Renders START from this template. Swap tokens, write copy into the slots. Never design a sheet from scratch.**
+
+One 1080 x 1350 px canvas (LinkedIn 4:5), same token block as the carousel template, print-to-PDF at 100% scale produces the final asset. The designed table and numbered chip patterns below are the `linkedin-cheatsheet-builder` spec rendered: real column structure, distinct header treatment, ruled rows, filled accent chips. Type, geometry, and color do all the design work.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[SHEET TITLE] · [CLIENT NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKEN BLOCK · same contract as the carousel template. Values from the brain's §7. ── */
+  :root{
+    --primary:#E8294C; --ink:#0A0A0A; --paper:#F6F5F2;
+    --muted:#5F5D57; --line:#E1DFD8; --canvas:#DDDBD5;
+    --font:'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--canvas);font-family:var(--font);color:var(--ink)}
+  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 0}
+
+  /* the single canvas */
+  .sheet{width:1080px;height:1350px;background:var(--paper);display:flex;flex-direction:column;padding:56px 64px 0;box-shadow:0 10px 40px rgba(10,10,10,.14);overflow:hidden}
+  .chrome{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:18px}
+  .wordmark{font-weight:800;font-size:20px;letter-spacing:.34em;text-transform:uppercase}
+  .tag{font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .head{padding:34px 0 8px}
+  .kick{font-size:16px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--primary)}
+  .title{font-size:clamp(44px,6vw,62px);font-weight:800;line-height:1.08;letter-spacing:-.015em;margin-top:10px}
+  .sub{font-size:23px;line-height:1.5;font-weight:500;color:var(--muted);margin-top:12px;max-width:92%}
+  .content{flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:12px 0}
+
+  /* pattern A · numbered chip cards (Listicle points, Countdown ranks) */
+  .pt{display:flex;gap:22px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .pt:last-child{border-bottom:none}
+  .chipnum{flex-shrink:0;width:56px;height:56px;background:var(--primary);color:var(--paper);font-size:28px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .pt h3{font-size:27px;font-weight:700;line-height:1.2}
+  .pt .take{font-size:19px;line-height:1.5;color:var(--muted);margin-top:6px}
+  .pt .take b{color:var(--ink);font-weight:600}
+
+  /* pattern B · designed comparison table (never markdown wearing borders) */
+  table{width:100%;border-collapse:collapse}
+  thead th{font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:14px 18px;border-bottom:3px solid var(--ink)}
+  thead th.acc{color:var(--primary)}
+  tbody td{font-size:19px;line-height:1.45;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:rgba(10,10,10,.025)}
+  td.dim{color:var(--muted);font-weight:600;font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* closing element (Bottom Line, The Shift, Wake-Up Call) */
+  .close{border-top:3px solid var(--primary);padding:22px 0 6px;font-size:24px;font-weight:700;line-height:1.35}
+  .close small{display:block;font-size:14px;letter-spacing:.26em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:8px}
+
+  .foot{border-top:1px solid var(--line);padding:18px 0 26px;display:flex;justify-content:space-between;align-items:center}
+  .foot .credit{font-size:15px;color:var(--muted)}
+  .foot .credit b{color:var(--ink);font-weight:600}
+
+  /* ── Print: the canvas IS the page ── */
+  @page{size:1080px 1350px;margin:0}
+  @media print{
+    html,body{background:var(--paper)}
+    .stage{min-height:0;padding:0;display:block}
+    .sheet{box-shadow:none;margin:0}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="stage"><section class="sheet">
+  <div class="chrome"><span class="wordmark">[BRAND]</span><span class="tag">[FORMAT TAG, e.g. CHEAT SHEET]</span></div>
+  <div class="head">
+    <div class="kick el">[KICKER]</div>
+    <h1 class="title el">[SHEET TITLE]</h1>
+    <p class="sub el">[SUBHEAD]</p>
+  </div>
+  <div class="content">
+    <!-- Use pattern A (repeat .pt per point) OR pattern B (one table). Never both, never a third invention. -->
+    <div class="pt el"><div class="chipnum">1</div><div><h3>[POINT HEADLINE]</h3><div class="take">[TAKEAWAY LINES]</div></div></div>
+    <!-- ...more .pt blocks... -->
+    <div class="close el"><small>[CLOSING LABEL]</small>[CLOSING LINE]</div>
+  </div>
+  <div class="foot"><span class="credit"><b>[NAME]</b> · built with the Purely Personal system</span><span class="tag">[HANDLE / URL]</span></div>
+</section></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  if (window.gsap) {
+    gsap.from(document.querySelectorAll('.el'), {opacity:0, y:24, duration:0.7, stagger:0.08, ease:'power3.out'});
+  }
+</script>
+</body>
+</html>
+```
+
+Filling rules:
+- Verify nothing clips at 1350px height before delivering. Overflow means tighter spacing or smaller type, never cut approved copy.
+- Table sheets replace the `.pt` blocks with the `table` pattern; the `.close` element stays.
+- Delivery line, always: "Preview blank? Use Show in folder and double-click the file to open it in your browser."
+
+---
+
 ## FINAL CHECK before you hand over the file
 - One `.html`, opens standalone, brand color applied from STEP 0.
 - Rethink Sans, no Poppins. No em dashes anywhere.

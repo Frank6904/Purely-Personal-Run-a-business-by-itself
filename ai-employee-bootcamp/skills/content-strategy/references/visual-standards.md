@@ -11,6 +11,19 @@ $2,000, not like it came out of a chatbot.
 When the client opens the output, their first reaction decides everything.
 "Oh wow, did you make that?" = pass. "That looks AI-generated" = fail and rebuild.
 
+## MODEL AWARENESS
+
+Visual rendering is template execution, not design improvisation. On any model, follow
+the canonical templates in html-output-templates.md verbatim: tokens swapped, copy
+inserted, nothing else changed. If you feel the urge to redesign the layout, that is
+the signal you are off-template.
+
+## COWORK PREVIEW
+
+Cowork's inline preview can show an HTML file as blank. That is a preview limitation,
+not a broken file. Every visual delivery must end with: "Preview blank? Use Show in
+folder and double-click the file to open it in your browser."
+
 ## ENVIRONMENT DETECTION (run before rendering)
 
 1. **claude.ai chat** — render as an ARTIFACT. Prefer interactive HTML with GSAP
@@ -56,6 +69,9 @@ can edit; it sits beside it.
 ## DESIGN RULES
 
 - Tokens come from BUSINESS-BRAIN.md §7. Fallback: design-system.md. Never invent a palette.
+- Font stacks always carry a system fallback after the brand font
+  (e.g. `'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif`). A blocked
+  font CDN must never leave the page in a default serif.
 - Typographic-first: big confident type, generous whitespace, one accent color doing
   all the work. 90/10 neutral-to-accent ratio.
 - Dark sections are allowed and read premium; keep body text sections light.
@@ -81,9 +97,11 @@ can edit; it sits beside it.
 - **Strategy document** → animated one-pager or horizontal GSAP deck: hero promise,
   pillar cards (staggered in), the topic grid as a real grid, the weekly rhythm as a
   timeline band, numbers counting up.
-- **Carousel** → 1080x1350 slide frames; screen mode gets slide-snap scrolling with
-  entrance staggers; print mode one slide per page. Copy identical to the approved text.
-- **Cheat sheet** → single 1080x1350 canvas; tables as designed tables, not markdown.
+- **Carousel** → start from the CAROUSEL DECK TEMPLATE in html-output-templates.md:
+  4:5 slide frames, slide-snap screen mode with entrance staggers, print mode one slide
+  per page. Copy identical to the approved text.
+- **Cheat sheet** → start from the SINGLE-CANVAS CHEATSHEET TEMPLATE in
+  html-output-templates.md: single 1080x1350 canvas; tables as designed tables, not markdown.
 - **Call brief** → one-screen dashboard: prospect header, pain map, question list,
   objection cards that flip/expand (React or details/summary), BANT+ meter.
 - **Newsletter** → email preview frame (600px column) with subject line options

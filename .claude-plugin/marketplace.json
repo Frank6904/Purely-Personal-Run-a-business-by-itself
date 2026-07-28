@@ -40,7 +40,7 @@
     {
       "name": "ai-employee-bootcamp",
       "description": "Your complete AI employee team. One brain. Five executives. 26 skills across marketing, sales, operations, finance, content, outreach, and skill customisation, running on a schedule while you sleep. Every skill reads BUSINESS-BRAIN.md first, then your foundation documents from your Business Brain folder or GitHub repo. Build My Business Brain turns your foundation documents into one filled BUSINESS-BRAIN.md. CMO drafts today's post in your voice. CRO builds 10 qualified prospects with personalised DM sequences powered by the Sell-by-Chat playbook. COO briefs your morning. CFO reports your revenue. LinkedIn Carousel Builder and Cheatsheet Builder turn any idea into designed, save-worthy LinkedIn assets. Viral Hook Generator spins up 24 scroll-stopping hooks on demand. Matchmaker audits your skills against your documents. Tailor fits every skill to your exact ICP, voice, and offer. Every output follows the shared visual standards: branded, animated HTML in your colors. by Daniel Paul, Purely Personal.",
-      "version": "5.1.0",
+      "version": "5.1.1",
       "author": {
         "name": "Daniel Paul",
         "url": "https://purelypersonal.ai"

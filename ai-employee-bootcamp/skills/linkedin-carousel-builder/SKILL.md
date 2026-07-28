@@ -20,6 +20,7 @@ Read ALL reference files before writing a single word:
 - `/references/carousel-frameworks.md` · cover, flow, and CTA patterns per intent, plus a full worked example
 - `/references/design-system.md` · brand tokens for the rendered deck
 - `/references/visual-standards.md` · environment detection, the HTML+GSAP stack, motion rules, the Carousel shape, and the visual quality gate. Step 9 depends on it.
+- `/references/html-output-templates.md` · the CAROUSEL DECK TEMPLATE (canonical). Step 9 starts from it, never from a blank file.
 
 One job: turn one idea into a document post the ICP swipes to the end, saves, and acts on.
 
@@ -236,6 +237,12 @@ The slide-by-slide copy in the Delivery Format is ALWAYS delivered. The rendered
 beside it, never instead of it. Follow `/references/visual-standards.md` for environment
 detection, motion, and design rules.
 
+**Template first, on any model:** start from the CAROUSEL DECK TEMPLATE in
+`references/html-output-templates.md`. Swap the `:root` tokens from the brain (§7,
+else `/references/design-system.md`), fill the copy slots, change nothing structural.
+Rendering is template execution, not design improvisation. If you feel the urge to
+redesign the layout, that is the signal you are off-template.
+
 **Environment detection first:**
 1. **claude.ai chat**: render the deck as an interactive HTML artifact with GSAP from cdnjs
    (`https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js` plus ScrollTrigger).
@@ -245,8 +252,9 @@ detection, motion, and design rules.
    unlocks the rendered deck.
 
 **Print mode (unchanged, the PDF source of truth):**
-- Each slide is a 1080 x 1350 px frame (LinkedIn document 4:5), one frame per printed page:
-  `@page { size: 1080px 1350px; margin: 0; }` and `.slide { width: 1080px; height: 1350px; page-break-after: always; overflow: hidden; }`
+- Each slide is the template's 4:5 frame, 540 x 675 px (1080 x 1350 at 50% scale; type is
+  vector so the PDF stays crisp), one frame per printed page:
+  `@page { size: 540px 675px; margin: 0; }` with the template's `@media print` block as shipped.
 - `@media print`: all animation off, every element at its final visible state, one slide
   per page. Print output is identical to the pre-GSAP static deck.
 
@@ -263,10 +271,10 @@ detection, motion, and design rules.
 **Design (both modes):**
 - Design tokens: the brain's design section (§7) if present, else `/references/design-system.md`
   defaults (Purely Personal red #E8294C, near-black, warm off-white, Poppins).
-- Bold typographic slides, no images required: headline 72 to 110px weight 800, support
-  lines 34 to 42px, a slide-number chip, progress dots, red accent bar. Cover on the black
-  background with the red ring; body slides alternate off-white and white; CTA slide on
-  red or black with the action in the largest type on the slide.
+- Bold typographic slides, no images required. The template's type scale, chrome
+  (tag + slide number), progress dots, accent bar, and footer are the design. ONE visual
+  system: every slide shares the same background and chrome; cover and CTA intensify with
+  type size only, per the template's `.cover` and `.cta` classes.
 - Everything inline except the GSAP cdnjs tag; fonts with system fallback. The deck must
   still read and print correctly if the script fails to load.
 - Copy in the file must be character-identical to the approved slide copy. No redesign edits.
@@ -307,6 +315,7 @@ CAPTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Intent: [intent] · Slides: [N] · Score: [N]/4
 Deck: [file path / artifact / "copy only" plus the environment that unlocks the deck]
+Preview blank? Use Show in folder and double-click the file to open it in your browser.
 Research: [conducted / not needed]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
@@ -342,7 +351,8 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 - No two slides repeat the same point. Reread the deck in sequence to confirm flow.
 - CTA slide has exactly one action; caption CTA uses the same keyword and action.
 - Caption is 500 to 900 characters (state the count).
-- If rendered: deck follows the Step 9 environment detection, every frame is 1080 x 1350, screen mode snaps and staggers, print mode kills all animation, print instructions delivered.
+- If rendered: deck follows the Step 9 environment detection, every frame is the template's 540 x 675 (4:5), screen mode snaps and staggers, print mode kills all animation, print instructions delivered.
+- Output uses the canonical template structure. A from-scratch layout fails the gate.
 - Visual gate 1: copy in the deck is character-identical to the approved slide copy and caption.
 - Visual gate 2: tokens are the client's (grep the HTML for the brain's hex codes).
 - Visual gate 3: readable with JS off; prints clean, one slide per page, animation off in print media.
