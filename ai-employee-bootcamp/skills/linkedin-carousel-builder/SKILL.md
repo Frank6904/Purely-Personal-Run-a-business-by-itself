@@ -20,7 +20,7 @@ Read ALL reference files before writing a single word:
 - `/references/carousel-frameworks.md` · cover, flow, and CTA patterns per intent, plus a full worked example
 - `/references/design-system.md` · brand tokens for the rendered deck
 - `/references/visual-standards.md` · environment detection, the HTML+GSAP stack, motion rules, the Carousel shape, and the visual quality gate. Step 9 depends on it.
-- `/references/html-output-templates.md` · the CAROUSEL DECK TEMPLATE (canonical). Step 9 starts from it, never from a blank file.
+- `/references/html-output-templates.md` · the AUTHORITY CAROUSEL TEMPLATE (default) and the EDITORIAL CAROUSEL TEMPLATE (alternate). Step 9 starts from one of them, never from a blank file.
 
 One job: turn one idea into a document post the ICP swipes to the end, saves, and acts on.
 
@@ -200,6 +200,15 @@ Slide rules:
 - Expert-level insight, not beginner basics. Every slide must add something the ICP
   did not already know or had not seen framed this way.
 
+Slide vocabulary (name the type in each slide's Visual idea so Step 9 renders it right):
+- **Step-badge slides:** sequential steps or numbered mistakes carry an accent badge chip
+  ("STEP 1: ...") above the headline (Authority style).
+- **Mockup-card slides:** when the slide shows a tool, files, a folder structure, or a
+  settings flow, name which UI-mockup card renders it: chat window, file-card trio,
+  folder tree, or settings/checklist panel (Authority components).
+- **Prompt-card slides:** when the slide hands the reader something to paste or ask,
+  the visual is the accent-outlined prompt card with its label and verbatim text.
+
 ---
 
 ## STEP 7 · CTA SLIDE (the closer)
@@ -237,11 +246,21 @@ The slide-by-slide copy in the Delivery Format is ALWAYS delivered. The rendered
 beside it, never instead of it. Follow `/references/visual-standards.md` for environment
 detection, motion, and design rules.
 
-**Template first, on any model:** start from the CAROUSEL DECK TEMPLATE in
+**Template first, on any model:** start from a canonical carousel template in
 `references/html-output-templates.md`. Swap the `:root` tokens from the brain (§7,
 else `/references/design-system.md`), fill the copy slots, change nothing structural.
 Rendering is template execution, not design improvisation. If you feel the urge to
 redesign the layout, that is the signal you are off-template.
+
+**Style choice (make it before rendering, state it in the delivery footer):**
+- **Default: the AUTHORITY CAROUSEL TEMPLATE** (dark, author chrome on every slide,
+  accent glow, step badges, UI-mockup cards, prompt cards).
+- **Use the EDITORIAL CAROUSEL TEMPLATE** (light, typographic) when the brain's §7
+  visual style words call for calm, minimal, understated, or editorial.
+- State the chosen style in the delivery footer: `Style: Authority` or `Style: Editorial`.
+- Authority extras: avatar slot uses the participant's headshot path if the brain
+  provides one, else the initials circle. Inline Claude/LinkedIn logos ONLY when the
+  content genuinely references those products.
 
 **Environment detection first:**
 1. **claude.ai chat**: render the deck as an interactive HTML artifact with GSAP from cdnjs
@@ -271,10 +290,12 @@ redesign the layout, that is the signal you are off-template.
 **Design (both modes):**
 - Design tokens: the brain's design section (§7) if present, else `/references/design-system.md`
   defaults (Purely Personal red #E8294C, near-black, warm off-white, Poppins).
-- Bold typographic slides, no images required. The template's type scale, chrome
-  (tag + slide number), progress dots, accent bar, and footer are the design. ONE visual
-  system: every slide shares the same background and chrome; cover and CTA intensify with
-  type size only, per the template's `.cover` and `.cta` classes.
+- Bold typographic slides, no photography required. The chosen template's type scale and
+  chrome are the design. ONE visual system: every slide shares the same background and
+  chrome. Authority: identical author chrome + page number on every slide, mockup and
+  prompt cards built from the template's components only. Editorial: wordmark tag +
+  slide number + progress dots, cover and CTA intensify with type size only, per the
+  template's `.cover` and `.cta` classes.
 - Everything inline except the GSAP cdnjs tag; fonts with system fallback. The deck must
   still read and print correctly if the script fails to load.
 - Copy in the file must be character-identical to the approved slide copy. No redesign edits.
@@ -313,7 +334,7 @@ CAPTION
 [full caption, paste-ready]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Intent: [intent] · Slides: [N] · Score: [N]/4
+Intent: [intent] · Slides: [N] · Style: [Authority / Editorial] · Score: [N]/4
 Deck: [file path / artifact / "copy only" plus the environment that unlocks the deck]
 Preview blank? Use Show in folder and double-click the file to open it in your browser.
 Research: [conducted / not needed]
@@ -352,7 +373,7 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 - CTA slide has exactly one action; caption CTA uses the same keyword and action.
 - Caption is 500 to 900 characters (state the count).
 - If rendered: deck follows the Step 9 environment detection, every frame is the template's 540 x 675 (4:5), screen mode snaps and staggers, print mode kills all animation, print instructions delivered.
-- Output uses the canonical template structure. A from-scratch layout fails the gate.
+- Output uses the canonical template structure (Authority default, or Editorial when the brain's style calls for it), and the chosen style is stated in the delivery footer. A from-scratch layout fails the gate.
 - Visual gate 1: copy in the deck is character-identical to the approved slide copy and caption.
 - Visual gate 2: tokens are the client's (grep the HTML for the brain's hex codes).
 - Visual gate 3: readable with JS off; prints clean, one slide per page, animation off in print media.

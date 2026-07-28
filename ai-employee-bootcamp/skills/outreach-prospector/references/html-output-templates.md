@@ -1,4 +1,4 @@
-<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.0.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.2.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its values override this file. Do not edit this copy alone — update the suite. -->
 # HTML Output Templates, AI Employee Bootcamp
 # Purely Personal · by Daniel Paul
 # World-class, self-contained, branded HTML for every executive output.
@@ -328,11 +328,308 @@ File name: `ceo-brain-deepdive-[topic].html`
 
 ---
 
-## CAROUSEL DECK TEMPLATE (canonical)
+## AUTHORITY CAROUSEL TEMPLATE (default)
 
 **Renders START from this template. Swap tokens, write copy into the slots. Never design a deck from scratch.**
 
-This is the client-approved quality bar for LinkedIn document carousels, captured as a template. It is the render step for `linkedin-carousel-builder` and for every fitted copy of it. The Rethink Sans guardrail above applies to executive documents; this deck's font is a token, set from the brain's §7 (default: Poppins per `design-system.md`), always with a system fallback.
+This is the DEFAULT carousel style, transcribed from the client's published, designer-made LinkedIn assets. Dark authority deck: near-black slides, a soft accent glow anchored top-right, the author's face and name on every slide, huge white extra-bold headlines with 1 or 2 accent-colored words, and white UI-mockup cards as the illustration language. Use it unless the brain's visual style words call for calm, minimal, or editorial, in which case use the EDITORIAL CAROUSEL TEMPLATE below.
+
+How it works:
+- **Tokens live in ONE `:root` block.** Same contract as every template: `--primary` (accent), `--bg` (near-black slide background), `--paper` (the white mockup cards), `--ink` (dark text inside cards), `--muted` (secondary text on dark), `--canvas`, `--font`. The tailor or the brain's §7 swaps this block and nothing else.
+- **Author chrome on EVERY slide, the signature.** Top-left: circular avatar ringed in the accent (img slot with an initials-circle fallback), bold white name, two-line muted headline. Top-right: white pill with a repost glyph and the word "Repost" in accent. Bottom-right: page number in muted white.
+- **Avatar slot rule:** use the participant's headshot path if the brain provides one (`<img src="...">` inside `.avatar`); otherwise keep the initials text. Never leave a broken img.
+- **Inline logo rule:** the Claude asterisk mark and the LinkedIn badge (components below) ride inline in headlines ONLY when the content genuinely references those products. A deck about fundraising gets zero logos.
+- **Slide frame is 540 x 675 px** (LinkedIn 4:5, 1080 x 1350 at 50% scale; type is vector so the printed PDF is crisp). `@page { size: 540px 675px }` makes print-to-PDF produce the upload-ready document.
+- **Screen mode** is scroll-snap; **print mode** is one slide per page with all animation off.
+- **`.el` is the reveal class.** Final values in the markup, `gsap.from()` inside an `if (window.gsap)` guard. A blocked CDN still shows a complete, static, perfect deck.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[DECK TITLE] · [CLIENT NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKEN BLOCK · the ONLY part that changes per client. Values from the brain's §7. ── */
+  :root{
+    --primary:#E8294C;               /* brand accent: glow, badges, accent words, avatar ring */
+    --bg:#0D0A0B;                    /* near-black slide background */
+    --paper:#FFFFFF;                 /* the white UI-mockup cards */
+    --ink:#16130F;                   /* dark text inside the cards */
+    --muted:rgba(255,255,255,.62);   /* secondary text on dark */
+    --canvas:#1A1618;                /* page behind the slides, screen only */
+    --font:'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--canvas);font-family:var(--font);color:#fff}
+
+  /* ── Screen mode: slide-snap vertical scrolling ── */
+  .deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slidewrap{min-height:100vh;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;padding:24px 0}
+
+  /* ── The slide: near-black with a soft accent glow bleeding off top-right ── */
+  .slide{width:540px;max-width:100%;height:675px;position:relative;overflow:hidden;
+    background:radial-gradient(460px 460px at 106% -10%, color-mix(in srgb,var(--primary) 25%, transparent), transparent 70%), var(--bg);
+    display:flex;flex-direction:column;padding:26px 30px 44px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+
+  /* ── AUTHOR CHROME · on every slide ── */
+  .chrome{display:flex;justify-content:space-between;align-items:center}
+  .author{display:flex;align-items:center;gap:11px}
+  .avatar{width:46px;height:46px;border-radius:50%;flex-shrink:0;border:2.5px solid var(--primary);
+    display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);
+    font-weight:800;font-size:16px;color:#fff;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .aname{font-weight:700;font-size:13.5px;line-height:1.25}
+  .ahead{font-size:9.5px;line-height:1.35;color:var(--muted)}
+  .repost{display:inline-flex;align-items:center;gap:6px;background:var(--paper);color:var(--primary);
+    font-weight:700;font-size:11px;padding:7px 13px;border-radius:9999px}
+  .repost svg{width:12px;height:12px;display:block}
+  .pagenum{position:absolute;right:28px;bottom:18px;font-size:11px;font-weight:600;color:var(--muted)}
+
+  /* ── Display type ── */
+  .body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:6px 0}
+  .hl{font-size:clamp(30px,7.4vw,40px);font-weight:800;line-height:1.12;letter-spacing:-.02em;color:#fff}
+  .hl .acc{color:var(--primary)}
+  .cover .hl{font-size:clamp(34px,8.5vw,46px);line-height:1.08}
+  .hook{font-size:16px;font-style:italic;font-weight:300;color:var(--muted);line-height:1.55;max-width:96%}
+  .sup{font-size:15px;line-height:1.6;color:rgba(255,255,255,.88);max-width:96%}
+
+  /* ── STEP BADGE · above the headline on step slides ── */
+  .badge{align-self:flex-start;background:var(--primary);color:#fff;font-weight:700;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:8px}
+
+  /* ── Bullets: accent dot markers, generous line height ── */
+  .points{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .points li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.9)}
+  .points li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--primary)}
+
+  /* ── Inline logos ride in headline flow (see COMPONENTS) ── */
+  .ilogo{height:.9em;width:auto;vertical-align:-.08em}
+  .claude-word{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em}
+
+  /* ── THE PROMPT CARD · dark, accent outline ── */
+  .promptcard{border:1.5px solid var(--primary);border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.03)}
+  .promptcard .plabel{display:flex;align-items:center;gap:8px;color:var(--primary);font-weight:700;font-size:13px;margin-bottom:8px}
+  .promptcard .plabel svg{width:14px;height:14px;display:block}
+  .promptcard .ptext{font-size:14.5px;line-height:1.6;color:#fff}
+
+  /* ── UI-MOCKUP CARDS · shared base + skeleton bars (pure CSS, no images) ── */
+  .mock{background:var(--paper);color:var(--ink);border-radius:14px;box-shadow:0 12px 34px rgba(0,0,0,.35);overflow:hidden}
+  .sk{height:8px;border-radius:4px;background:#E7E4DE}
+  .sk.w40{width:40%}.sk.w60{width:60%}.sk.w80{width:80%}.sk.w95{width:95%}
+
+  /* mockup 1 · chat window */
+  .chat-head{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #ECE9E3;font-size:12px;font-weight:700}
+  .chat-head .dots3{margin-left:auto;color:#A9A49C;font-weight:700;letter-spacing:2px}
+  .chat-msg{margin:12px 14px 0;padding:9px 12px;border:1px solid #ECE9E3;border-radius:9px;font-size:11.5px;color:#5B564E}
+  .chat-reply{display:flex;flex-direction:column;gap:7px;padding:14px}
+  .chat-cap{background:#F4F2EE;padding:8px 14px;font-size:10px;font-weight:600;color:#5B564E}
+
+  /* mockup 2 · file-card trio */
+  .trio{display:flex;gap:10px}
+  .fcard{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;border-radius:12px}
+  .fnum{background:var(--primary);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px}
+  .fdoc{width:20px;height:25px;border:2px solid #C9C4BB;border-radius:3px;position:relative}
+  .fdoc::before,.fdoc::after{content:"";position:absolute;left:3px;right:3px;height:2px;background:#DDD9D1}
+  .fdoc::before{top:6px} .fdoc::after{top:11px}
+  .fname{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;font-weight:600;word-break:break-all}
+
+  /* mockup 3 · folder tree */
+  .tree{padding:16px 18px;display:flex;flex-direction:column;gap:9px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-weight:500}
+  .trow{display:flex;align-items:center;gap:8px}
+  .trow.ind{margin-left:9px;padding-left:16px;border-left:1px dotted #C9C4BB}
+  .trow.ind2{margin-left:9px;padding-left:34px;border-left:1px dotted #C9C4BB}
+  .folder{width:16px;height:12px;background:var(--primary);border-radius:2px;position:relative;flex-shrink:0}
+  .folder::before{content:"";position:absolute;top:-3px;left:0;width:7px;height:3px;background:var(--primary);border-radius:2px 2px 0 0}
+  .fdoc.sm{width:12px;height:15px;border-width:1.5px}
+  .fdoc.sm::before{top:4px}.fdoc.sm::after{top:7px}
+
+  /* mockup 4 · settings/checklist panel */
+  .panel{display:flex}
+  .panel-side{width:44px;background:#F4F2EE;padding:12px 0;display:flex;flex-direction:column;gap:8px;align-items:center;flex-shrink:0}
+  .panel-side i{width:18px;height:6px;border-radius:3px;background:#DAD6CE;display:block}
+  .panel-main{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+  .prow{font-size:11px;line-height:1.45;padding:7px 9px;border-radius:7px;color:#3E3A33}
+  .prow b{color:#8B857B;margin-right:5px}
+  .prow.hot{background:color-mix(in srgb,var(--primary) 12%, #fff);border:1px solid var(--primary);color:var(--ink)}
+  .prow.hot b{color:var(--primary)}
+
+  /* ── Print mode: one 540x675 frame per page, all animation off ── */
+  @page{size:540px 675px;margin:0}
+  @media print{
+    html,body{background:var(--bg)}
+    .deck{height:auto;overflow:visible;scroll-snap-type:none}
+    .slidewrap{min-height:0;padding:0;display:block;page-break-after:always}
+    .slide{box-shadow:none;margin:0}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 · COVER (glow + big headline + italic hook) -->
+  <div class="slidewrap"><section class="slide cover">
+    <div class="chrome">
+      <div class="author">
+        <span class="avatar">[INITIALS]<!-- or: <img src="[HEADSHOT PATH]" alt="[NAME]"> --></span>
+        <div><div class="aname">[NAME]</div><div class="ahead">[HEADLINE LINE 1]<br>[HEADLINE LINE 2]</div></div>
+      </div>
+      <span class="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V9a4 4 0 0 1 4-4h9"/><path d="M14 2l3 3-3 3"/><path d="M20 13v2a4 4 0 0 1-4 4H7"/><path d="M10 22l-3-3 3-3"/></svg>Repost</span>
+    </div>
+    <div class="body">
+      <h1 class="hl el">[COVER TITLE with <span class="acc">[1 TO 2 ACCENT WORDS]</span>]</h1>
+      <p class="hook el">[ITALIC SUB-HOOK, one line that makes slide 2 unavoidable]</p>
+    </div>
+    <span class="pagenum">1 / [N]</span>
+  </section></div>
+
+  <!-- SLIDE 2..N-1 · STEP-BADGE SLIDE (badge + headline + bullets; swap .points for one mockup card or a .promptcard when the slide calls for it) -->
+  <div class="slidewrap"><section class="slide">
+    <div class="chrome">
+      <div class="author">
+        <span class="avatar">[INITIALS]</span>
+        <div><div class="aname">[NAME]</div><div class="ahead">[HEADLINE LINE 1]<br>[HEADLINE LINE 2]</div></div>
+      </div>
+      <span class="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V9a4 4 0 0 1 4-4h9"/><path d="M14 2l3 3-3 3"/><path d="M20 13v2a4 4 0 0 1-4 4H7"/><path d="M10 22l-3-3 3-3"/></svg>Repost</span>
+    </div>
+    <div class="body">
+      <span class="badge el">STEP [X]: [SHORT LABEL]</span>
+      <h2 class="hl el">[HEADLINE with <span class="acc">[ACCENT PHRASE]</span>]</h2>
+      <ul class="points">
+        <li class="el">[BULLET 1]</li>
+        <li class="el">[BULLET 2]</li>
+      </ul>
+    </div>
+    <span class="pagenum">2 / [N]</span>
+  </section></div>
+
+  <!-- SLIDE N · CTA -->
+  <div class="slidewrap"><section class="slide">
+    <div class="chrome">
+      <div class="author">
+        <span class="avatar">[INITIALS]</span>
+        <div><div class="aname">[NAME]</div><div class="ahead">[HEADLINE LINE 1]<br>[HEADLINE LINE 2]</div></div>
+      </div>
+      <span class="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V9a4 4 0 0 1 4-4h9"/><path d="M14 2l3 3-3 3"/><path d="M20 13v2a4 4 0 0 1-4 4H7"/><path d="M10 22l-3-3 3-3"/></svg>Repost</span>
+    </div>
+    <div class="body">
+      <h2 class="hl el">[CTA HEADLINE with <span class="acc">[ACCENT PHRASE]</span>]</h2>
+      <p class="sup el">[THE ONE ACTION, matches the caption's CTA exactly]</p>
+    </div>
+    <span class="pagenum">[N] / [N]</span>
+  </section></div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  // Markup is fully rendered by default. Entrances are gsap.from() only, guarded:
+  // with the CDN blocked the deck is simply static and complete.
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    var deck = document.getElementById('deck');
+    document.querySelectorAll('.slide').forEach(function(slide){
+      gsap.from(slide.querySelectorAll('.el'), {
+        opacity:0, y:28, duration:0.75, stagger:0.09, ease:'power3.out',
+        scrollTrigger:{ trigger: slide, scroller: deck, start: 'top 70%', once: true }
+      });
+    });
+  }
+</script>
+</body>
+</html>
+```
+
+### AUTHORITY COMPONENTS (copy-paste, all styled by the CSS above)
+
+**Author chrome** is in the template skeleton: `.chrome` with `.author` (avatar + name + two-line headline) and the `.repost` pill, plus `.pagenum` at the bottom. It appears on EVERY slide, unchanged.
+
+**Step badge** (above the headline on step slides):
+```html
+<span class="badge el">STEP 1: [SHORT LABEL]</span>
+```
+
+**The prompt card** (prompt slides and bottom strips):
+```html
+<div class="promptcard el">
+  <div class="plabel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg>The Prompt:</div>
+  <div class="ptext">"[PROMPT TEXT, white, verbatim what the reader should paste]"</div>
+</div>
+```
+The label slot may read "The Prompt:", "The Ask:", or another 2-word accent label when the slide is not a literal prompt.
+
+**Mockup card 1 · chat window** (header row with Claude mark + name + ellipsis, message input, skeleton reply, caption strip):
+```html
+<div class="mock el">
+  <div class="chat-head"><svg class="ilogo" viewBox="0 0 24 24" aria-hidden="true"><g fill="#D97757"><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(30 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(60 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(90 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(120 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(150 12 12)"/></g></svg> Claude <span class="dots3">···</span></div>
+  <div class="chat-msg">[SHORT USER MESSAGE]</div>
+  <div class="chat-reply"><div class="sk w95"></div><div class="sk w80"></div><div class="sk w60"></div></div>
+  <div class="chat-cap">[ONE-LINE CAPTION]</div>
+</div>
+```
+
+**Mockup card 2 · file-card trio** (three side-by-side cards: doc icon, accent number chip, mono filename, skeleton lines):
+```html
+<div class="trio el">
+  <div class="mock fcard"><span class="fnum">01</span><span class="fdoc"></span><div class="fname">[file-name.ext]</div><div class="sk w80" style="width:100%"></div><div class="sk w60" style="width:70%"></div></div>
+  <div class="mock fcard"><span class="fnum">02</span><span class="fdoc"></span><div class="fname">[file-name.ext]</div><div class="sk w80" style="width:100%"></div><div class="sk w60" style="width:70%"></div></div>
+  <div class="mock fcard"><span class="fnum">03</span><span class="fdoc"></span><div class="fname">[file-name.ext]</div><div class="sk w80" style="width:100%"></div><div class="sk w60" style="width:70%"></div></div>
+</div>
+```
+
+**Mockup card 3 · folder tree**:
+```html
+<div class="mock tree el">
+  <div class="trow"><span class="folder"></span>[project-folder]</div>
+  <div class="trow ind"><span class="folder"></span>[sub-folder]</div>
+  <div class="trow ind2"><span class="fdoc sm"></span>[file-name.md]</div>
+  <div class="trow ind2"><span class="fdoc sm"></span>[file-name.md]</div>
+</div>
+```
+
+**Mockup card 4 · settings/checklist panel** (small sidebar column + numbered instruction list, one row highlighted accent):
+```html
+<div class="mock panel el">
+  <div class="panel-side"><i></i><i></i><i></i><i></i></div>
+  <div class="panel-main">
+    <div class="prow"><b>1.</b> [INSTRUCTION]</div>
+    <div class="prow hot"><b>2.</b> [THE HIGHLIGHTED STEP]</div>
+    <div class="prow"><b>3.</b> [INSTRUCTION]</div>
+  </div>
+</div>
+```
+
+**Inline logo · Claude mark + word** (the asterisk is 6 rotated capsule rays around center, a 12-ray burst, fill #D97757; the word rides in a serif-ish weight). Use ONLY when the content genuinely references Claude:
+```html
+<svg class="ilogo" viewBox="0 0 24 24" aria-hidden="true"><g fill="#D97757"><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(30 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(60 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(90 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(120 12 12)"/><rect x="10.6" y="1.2" width="2.8" height="21.6" rx="1.4" transform="rotate(150 12 12)"/></g></svg><span class="claude-word">Claude</span>
+```
+
+**Inline logo · LinkedIn badge** (rounded square, fill #0A66C2, white lowercase "in"). Use ONLY when the content genuinely references LinkedIn:
+```html
+<svg class="ilogo" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4.5" fill="#0A66C2"/><text x="12" y="17.2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="13.5" fill="#FFFFFF">in</text></svg>
+```
+Both logos are sized to ride inline with headline text (`height:.9em; vertical-align:-.08em`, the `.ilogo` class).
+
+Filling rules (Authority):
+- One `.slidewrap` per slide, in order. Author chrome identical on every slide; only `.pagenum` changes.
+- Copy goes into the slots character-identical to the approved slide copy. No redesign edits, no new CSS classes, no layout inventions.
+- Allowed variation per slide: which body block the slide uses (bullets, one mockup card, or a prompt card), matching that slide's Visual idea. Nothing else varies.
+- 1 to 2 accent words per headline via `<span class="acc">`. More than 2 dilutes the system.
+- Avatar: headshot img if the brain provides a path, else initials. Logos only where the products are genuinely referenced.
+- Delivery line, always: "Preview blank? Use Show in folder and double-click the file to open it in your browser."
+
+---
+
+## EDITORIAL CAROUSEL TEMPLATE (alternate)
+
+**The alternate carousel style: light, calm, typographic. Choose it when the brain's visual style words call for calm, minimal, understated, or editorial. Otherwise the AUTHORITY template above is the default.**
+
+This is the light typographic deck, kept as-shipped. It is the render step for `linkedin-carousel-builder` when Editorial is chosen. The Rethink Sans guardrail above applies to executive documents; this deck's font is a token, set from the brain's §7 (default: Poppins per `design-system.md`), always with a system fallback.
 
 How it works:
 - **Tokens live in ONE `:root` block.** Brand color, ink, paper, muted, hairline, canvas, and the font stack. The tailor or the brain's §7 swaps this block and nothing else. Every slide recolors and refonts from these seven values.
@@ -593,6 +890,141 @@ One 1080 x 1350 px canvas (LinkedIn 4:5), same token block as the carousel templ
 Filling rules:
 - Verify nothing clips at 1350px height before delivering. Overflow means tighter spacing or smaller type, never cut approved copy.
 - Table sheets replace the `.pt` blocks with the `table` pattern; the `.close` element stays.
+- Delivery line, always: "Preview blank? Use Show in folder and double-click the file to open it in your browser."
+
+---
+
+## FUNNEL INFOGRAPHIC TEMPLATE (cheatsheet pattern C)
+
+**Renders START from this template. Swap tokens, write copy into the slots. Never design a sheet from scratch.**
+
+The third cheatsheet pattern, for process, system, and how-to topics with 5 to 8 sequential steps. One tall 1080 x 1350 canvas, light background, a CENTER SPINE of accent-filled trapezoid steps narrowing downward, annotations on the left, "The Prompt:" cards on the right, dotted accent connectors, and a full-width dark AUTHOR BAR footer. Same token contract, print-perfect at `@page 1080px 1350px`.
+
+Structure:
+- **Header:** big black extra-bold headline with 1 or 2 accent words (`<span class="acc">`) and optional inline logo slots (same `.ilogo` SVGs as the Authority template, same rule: only when the products are genuinely referenced); one-line promise subtitle.
+- **Center spine:** 5 to 8 trapezoids (`clip-path` polygons), each narrower than the last via the inline `--w` custom property. Each carries a number chip circle, a white uppercase step title, and a simple glyph slot (typographic or geometric glyphs only, never illustrations).
+- **Left column:** annotation blocks per step: an accent bold claim line, "What to do:" bold + short explanation, optional mono slash-commands.
+- **Right column:** "The Prompt:" cards, white with an accent border.
+- **Connectors:** short dotted accent lines from the side blocks toward the funnel, drawn with CSS dotted borders. Simple and robust; skip a connector rather than fight the layout.
+- **Footer:** full-width dark author bar: avatar circle (img slot + initials fallback), bold name, muted tagline, accent Repost pill.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[SHEET TITLE] · [CLIENT NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKEN BLOCK · same contract as every template. Values from the brain's §7. ── */
+  :root{
+    --primary:#E8294C;   /* accent: trapezoids, claims, prompt borders, repost pill */
+    --ink:#0A0A0A;       /* near-black text and the author bar */
+    --paper:#FBFAF8;     /* the sheet background, white/off-white */
+    --muted:#5F5D57;     /* secondary text */
+    --line:#E1DFD8;      /* hairlines */
+    --canvas:#DDDBD5;    /* page behind the sheet, screen only */
+    --font:'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--canvas);font-family:var(--font);color:var(--ink)}
+  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 0}
+
+  /* the single canvas */
+  .sheet{width:1080px;height:1350px;background:var(--paper);display:flex;flex-direction:column;padding:52px 56px 0;box-shadow:0 10px 40px rgba(10,10,10,.14);overflow:hidden}
+
+  /* header */
+  .head{text-align:center;padding-bottom:10px}
+  .head h1{font-size:clamp(40px,5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.015em}
+  .head .acc{color:var(--primary)}
+  .head .ilogo{height:.9em;width:auto;vertical-align:-.08em}
+  .promise{font-size:20px;color:var(--muted);font-weight:500;margin-top:10px}
+
+  /* funnel rows: left annotation · trapezoid · right prompt card */
+  .flow{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:14px 0}
+  .frow{display:grid;grid-template-columns:265px 1fr 265px;gap:20px;align-items:center}
+
+  /* CENTER SPINE · accent trapezoid, narrower each step via --w */
+  .ftrap{margin:0 auto;width:var(--w,460px);height:82px;background:var(--primary);color:#fff;
+    clip-path:polygon(3.5% 0,96.5% 0,91% 100%,9% 100%);
+    display:flex;align-items:center;justify-content:center;gap:14px}
+  .fnumc{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--primary);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ftitle{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:18px}
+  .fglyph{font-size:20px;font-weight:800;opacity:.85}
+
+  /* LEFT · annotation block with dotted connector toward the funnel */
+  .ann{position:relative;text-align:right;padding-right:6px}
+  .ann::after{content:"";position:absolute;right:-22px;top:50%;width:24px;border-top:2px dotted var(--primary)}
+  .ann .claim{color:var(--primary);font-weight:700;font-size:15px;line-height:1.35}
+  .ann .what{font-size:13px;line-height:1.5;color:var(--muted);margin-top:4px}
+  .ann .what b{color:var(--ink)}
+  .cmd{display:inline-block;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;background:#F1EFEA;border:1px solid var(--line);padding:2px 8px;border-radius:6px;margin-top:5px}
+
+  /* RIGHT · prompt card with dotted connector toward the funnel */
+  .pcard{position:relative;background:#fff;border:1.5px solid var(--primary);border-radius:12px;padding:13px 15px}
+  .pcard::before{content:"";position:absolute;left:-22px;top:50%;width:24px;border-top:2px dotted var(--primary)}
+  .pcard .plabel{color:var(--primary);font-weight:700;font-size:13px;margin-bottom:5px}
+  .pcard .ptext{font-size:13px;line-height:1.5;color:var(--ink)}
+
+  /* FOOTER · full-width dark author bar */
+  .abar{background:var(--ink);color:#fff;margin:14px -56px 0;padding:22px 56px;display:flex;align-items:center;gap:14px}
+  .avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;border:2.5px solid var(--primary);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);font-weight:800;font-size:18px;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .abar .aname{font-weight:700;font-size:17px}
+  .abar .atag{font-size:13px;color:rgba(255,255,255,.62)}
+  .abar .repost{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--primary);font-weight:700;font-size:13px;padding:8px 16px;border-radius:9999px}
+  .abar .repost svg{width:13px;height:13px;display:block}
+
+  /* ── Print: the canvas IS the page ── */
+  @page{size:1080px 1350px;margin:0}
+  @media print{
+    html,body{background:var(--paper)}
+    .stage{min-height:0;padding:0;display:block}
+    .sheet{box-shadow:none;margin:0}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="stage"><section class="sheet">
+  <div class="head">
+    <h1 class="el">[HEADLINE with <span class="acc">[1 TO 2 ACCENT WORDS]</span>]</h1>
+    <p class="promise el">[ONE-LINE PROMISE SUBTITLE]</p>
+  </div>
+  <div class="flow">
+    <!-- one .frow per step, 5 to 8 steps, --w shrinking each row (e.g. 560, 520, 480, 440, 400, 360px).
+         Drop the .ann or .pcard cell (leave an empty <div></div>) on rows that need only one side. -->
+    <div class="frow">
+      <div class="ann el"><div class="claim">[ACCENT CLAIM LINE]</div><div class="what"><b>What to do:</b> [SHORT EXPLANATION]</div><span class="cmd">[/slash-command, optional]</span></div>
+      <div class="ftrap el" style="--w:560px"><span class="fnumc">1</span><span class="ftitle">[STEP TITLE]</span><span class="fglyph">[GLYPH]</span></div>
+      <div class="pcard el"><div class="plabel">The Prompt:</div><div class="ptext">"[PROMPT TEXT]"</div></div>
+    </div>
+    <!-- ...more .frow blocks, --w decreasing... -->
+  </div>
+  <div class="abar">
+    <span class="avatar">[INITIALS]<!-- or: <img src="[HEADSHOT PATH]" alt="[NAME]"> --></span>
+    <div><div class="aname">[NAME]</div><div class="atag">[TAGLINE]</div></div>
+    <span class="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V9a4 4 0 0 1 4-4h9"/><path d="M14 2l3 3-3 3"/><path d="M20 13v2a4 4 0 0 1-4 4H7"/><path d="M10 22l-3-3 3-3"/></svg>Repost</span>
+  </div>
+</section></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  if (window.gsap) {
+    gsap.from(document.querySelectorAll('.el'), {opacity:0, y:24, duration:0.7, stagger:0.08, ease:'power3.out'});
+  }
+</script>
+</body>
+</html>
+```
+
+Filling rules (Funnel):
+- 5 to 8 `.frow` blocks, `--w` strictly decreasing so the spine reads as a funnel.
+- Glyph slots take typographic or geometric glyphs only (numbers, arrows, symbols like #, >, =). Never illustrations, never emoji as design elements.
+- Avatar: headshot img if the brain provides a path, else initials. Logos only where the products are genuinely referenced.
+- Verify nothing clips at 1350px height before delivering. Overflow means tighter spacing or smaller type, never cut approved copy.
 - Delivery line, always: "Preview blank? Use Show in folder and double-click the file to open it in your browser."
 
 ---

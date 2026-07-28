@@ -1,4 +1,4 @@
-<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.0.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its Design Tokens override this file. -->
+<!-- SHARED REFERENCE · CANONICAL SOURCE: Purely Personal skill suite v5.2.0 · 2026-07 · If BUSINESS-BRAIN.md exists in the project, its Design Tokens override this file. -->
 
 # VISUAL OUTPUT STANDARDS — Purely Personal
 
@@ -88,7 +88,11 @@ can edit; it sits beside it.
   emoji as design elements, icon soup, gradient-on-gradient, drop shadows on everything,
   more than 2 font families. If a section needs imagery, use typography, geometry
   (rules, frames, numbered chips), or generated photography — never a shape pretending
-  to be an illustration.
+  to be an illustration. Clarification: the Authority template's pure-CSS UI-mockup
+  cards (chat window, file cards, folder tree, settings panel) are geometry, not
+  illustration, and small inline brand marks (the Claude asterisk, the LinkedIn badge)
+  are logos, not clip-art. Both are allowed, from the template components only, and
+  logos only where the products are genuinely referenced.
 - Every deliverable is branded: client name + logo position from the brain, and the
   footer credit line "[NAME] · built with the Purely Personal system".
 
@@ -97,11 +101,17 @@ can edit; it sits beside it.
 - **Strategy document** → animated one-pager or horizontal GSAP deck: hero promise,
   pillar cards (staggered in), the topic grid as a real grid, the weekly rhythm as a
   timeline band, numbers counting up.
-- **Carousel** → start from the CAROUSEL DECK TEMPLATE in html-output-templates.md:
-  4:5 slide frames, slide-snap screen mode with entrance staggers, print mode one slide
-  per page. Copy identical to the approved text.
+- **Carousel** → start from the AUTHORITY CAROUSEL TEMPLATE (default: dark slides,
+  accent glow, author chrome on every slide, step badges, UI-mockup cards, prompt cards)
+  in html-output-templates.md; use the EDITORIAL CAROUSEL TEMPLATE (alternate, light
+  typographic) when the brain's visual style words call for calm, minimal, or editorial.
+  Either way: 4:5 slide frames, slide-snap screen mode with entrance staggers, print mode
+  one slide per page. Copy identical to the approved text.
 - **Cheat sheet** → start from the SINGLE-CANVAS CHEATSHEET TEMPLATE in
-  html-output-templates.md: single 1080x1350 canvas; tables as designed tables, not markdown.
+  html-output-templates.md: single 1080x1350 canvas; tables as designed tables, not
+  markdown. Process/system/how-to topics with 5 to 8 sequential steps use the FUNNEL
+  INFOGRAPHIC TEMPLATE (pattern C): trapezoid step spine, left annotations, right
+  prompt cards, dark author bar.
 - **Call brief** → one-screen dashboard: prospect header, pain map, question list,
   objection cards that flip/expand (React or details/summary), BANT+ meter.
 - **Newsletter** → email preview frame (600px column) with subject line options

@@ -1,8 +1,8 @@
 ---
 name: linkedin-cheatsheet-builder
 description: >
-  Builds a save-worthy LinkedIn cheat sheet in one of three formats (Listicle, Comparison
-  table, Do's & Don'ts), routed by a decision tree, in the participant's exact voice:
+  Builds a save-worthy LinkedIn cheat sheet in one of four formats (Listicle, Comparison
+  table, Do's & Don'ts, Funnel Infographic), routed by a decision tree, in the participant's exact voice:
   design-ready copy, a caption to post it with, and a rendered 1080x1350 HTML one-pager
   ready for print-to-PDF. ALWAYS use this skill when the user says "cheat sheet",
   "cheatsheet", "listicle", "dos and don'ts", "comparison post", "X vs Y", "reference
@@ -20,12 +20,13 @@ Read the shared references before writing a single word:
 - `/references/human-writing-standards.md` · Invisibility Diagnostic, AI blacklist, hook test
 - `/references/design-system.md` · brand tokens for the rendered one-pager
 - `/references/visual-standards.md` · environment detection, the HTML+GSAP stack, motion and design rules, the Cheat sheet shape, and the visual quality gate. Step 5 depends on it.
-- `/references/html-output-templates.md` · the SINGLE-CANVAS CHEATSHEET TEMPLATE (canonical). Step 5 starts from it, never from a blank file.
+- `/references/html-output-templates.md` · the SINGLE-CANVAS CHEATSHEET TEMPLATE (patterns A and B) and the FUNNEL INFOGRAPHIC TEMPLATE (pattern C). Both canonical. Step 5 starts from one of them, never from a blank file.
 
 Load exactly ONE format reference after the router picks the format in Step 1:
 - `/references/cheatsheet-listicle.md` · 6 main points x 4 takeaways
 - `/references/cheatsheet-comparison.md` · X vs Y, Bad vs Good, What They Think vs Reality
 - `/references/cheatsheet-dos-donts.md` · Classic sections, Side-by-Side pairs, Numbered Countdown
+- Funnel Infographic (pattern C) has no separate format reference: its spec IS the FUNNEL INFOGRAPHIC TEMPLATE in `/references/html-output-templates.md` (step titles, annotation blocks, prompt cards, author bar)
 
 One job: produce a reference the ICP saves, reopens, and acts on.
 If they read it once and scroll on, it failed. A cheat sheet earns the save or it earns nothing.
@@ -82,14 +83,15 @@ Every cheat sheet has ONE primary intent that all points serve. Never mix intent
 
 Walk the tree in order. First YES wins.
 
-1. Two approaches, models, or audiences of roughly equal weight? → **COMPARISON · X vs Y**
-2. One widespread belief the participant can debunk from experience? → **COMPARISON · What They Think vs Reality**
-3. Wrong way vs right way on one topic?
+1. A process, system, or how-to the reader performs in order, with 5 to 8 sequential steps (especially when steps carry a prompt or command to run)? → **FUNNEL INFOGRAPHIC · pattern C**
+2. Two approaches, models, or audiences of roughly equal weight? → **COMPARISON · X vs Y**
+3. One widespread belief the participant can debunk from experience? → **COMPARISON · What They Think vs Reality**
+4. Wrong way vs right way on one topic?
    - Contrast organized by strategic dimensions (focus, metrics, positioning, messaging) → **COMPARISON · Bad vs Good**
    - Contrast organized as behaviors, each wrong action with one direct correction → **DO'S & DON'TS · Side-by-Side Pairs**
-4. A set of mistakes with a clear severity ranking? → **DO'S & DON'TS · Numbered Countdown**
-5. A mixed set of distinct dos and don'ts that do not pair 1:1? → **DO'S & DON'TS · Classic Sections**
-6. None of the above (one topic that breaks into steps, phases, principles, or a checklist)? → **LISTICLE · 6 points x 4 takeaways**
+5. A set of mistakes with a clear severity ranking? → **DO'S & DON'TS · Numbered Countdown**
+6. A mixed set of distinct dos and don'ts that do not pair 1:1? → **DO'S & DON'TS · Classic Sections**
+7. None of the above (one topic that breaks into steps, phases, principles, or a checklist, but not a 5-to-8-step sequence)? → **LISTICLE · 6 points x 4 takeaways**
 
 **Intent tiebreaker** when two routes both fit the material:
 - EDUCATING → Listicle
@@ -160,7 +162,7 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 
 **Skill checks:**
 - ONE intent drives every point, row, and pair. Name it and confirm no point serves a different intent.
-- Structure matches the format reference template exactly: section order, arrow takeaways, table columns, closing element (Similarities, Keywords, Bottom Line, The Shift, or Wake-Up Call as the format requires).
+- Structure matches the format's template exactly: section order, arrow takeaways, table columns, closing element (Similarities, Keywords, Bottom Line, The Shift, or Wake-Up Call as the format requires). Pattern C: 5 to 8 funnel steps in performed order, each with its annotation and, where the step hands the reader something to run, a prompt card.
 - Word limits verified by counting: head or title, subheading, every headline, every takeaway or cell. State the count for any line at a limit.
 - Every claim, number, and example traces to the brain, the intake, or pasted source. Nothing invented.
 - Comparison and Do's & Don'ts only: left and right genuinely contrast. No straw men. The left side is a mistake or belief people actually hold.
@@ -170,7 +172,7 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 - Visual gate 3: readable with JS off; prints clean at 1080 x 1350 with animation off in print media.
 - Visual gate 4: no banned visual elements (the NEVER list in visual-standards.md).
 - Visual gate 5: the Rule of the Room honestly applied. Would the participant show this to someone?
-- Output uses the canonical template structure. A from-scratch layout fails the gate.
+- Output uses the canonical template structure (single-canvas pattern A or B, or the Funnel Infographic template for pattern C). A from-scratch layout fails the gate.
 
 ---
 
@@ -178,10 +180,14 @@ Target 4/4. For every point you scored 1, also write the one-line edit that woul
 
 The copy block in the Delivery Format is ALWAYS delivered: it is the designer handoff and the editable source of truth. The rendered sheet sits beside it. Follow `/references/visual-standards.md` for environment detection, motion, and design rules.
 
-**Template first, on any model:** start from the SINGLE-CANVAS CHEATSHEET TEMPLATE in
-`references/html-output-templates.md`. Swap the `:root` tokens from the brain (§7, else
-`/references/design-system.md`), fill the copy slots, pick pattern A (numbered chip cards)
-or pattern B (designed table) per the routed format, change nothing structural. Rendering
+**Template first, on any model:** start from the canonical template in
+`references/html-output-templates.md` that matches the routed format. Listicle,
+Comparison, and Do's & Don'ts use the SINGLE-CANVAS CHEATSHEET TEMPLATE with pattern A
+(numbered chip cards) or pattern B (designed table). Funnel Infographic uses the FUNNEL
+INFOGRAPHIC TEMPLATE (pattern C): trapezoid spine, left annotations, right prompt cards,
+dark author bar, avatar slot with headshot path if the brain provides one, else the
+initials circle. Swap the `:root` tokens from the brain (§7, else
+`/references/design-system.md`), fill the copy slots, change nothing structural. Rendering
 is template execution, not design improvisation. If you feel the urge to redesign the
 layout, that is the signal you are off-template.
 
