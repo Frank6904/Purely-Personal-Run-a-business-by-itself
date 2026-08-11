@@ -62,6 +62,21 @@ Read the input. Identify which function owns the problem.
 | Newsletter | `/newsletter-writer` |
 | Skill customisation | `/matchmaker` then `/tailor` |
 | Building a new AI employee | `/build-your-own-employee` |
+| Stage talk, draw-along model, Present mode, Model Lab geometry | **Sequence (do not reverse):** (1) Stage Lab Model Lab skill that matches (`/bridge`, `/ladder`, `/doorway`, `/funnel`, …) → worksheet + labels; (2) Stage Lab `/danny-video-voice` → draw-along / talk track in Danny's spoken DNA. Visual before voice. |
+| Building or teaching something for **AI Founder Circle** | Same sequence. Offer facts from Circle copy (`pp-ai-founders-circle/copy.md` or project docs) + Stage Lab `references/founders-circle-worked-examples.md`. Build *for* the Circle, not a generic coach demo. Spoken pass always via `/danny-video-voice`, never LinkedIn Voice DNA. |
+| Video script / session talk track / "write how I speak on camera" (no new geometry) | Stage Lab `/danny-video-voice` only |
+| LinkedIn / written copy about a model already built | CMO / caption skills with **written** Voice DNA (different language from spoken) |
+
+**Stage Lab + spoken voice chain (when the Stage Lab plugin is installed):**
+
+```
+Goal (Circle / stage model)
+  → Model Lab geometry + worksheet
+  → /danny-video-voice (Say column / video script)
+  → CEO Verdict (one next action)
+```
+
+AI CEO runs **after** those plugin skills finish — consolidates into one answer. Do not invent a talk track before the drawing exists.
 
 **If the input spans multiple functions** (e.g. "I need more clients and better content"):
 - Identify the primary function (usually Revenue or Marketing)
