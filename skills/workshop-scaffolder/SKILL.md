@@ -1,6 +1,6 @@
 ---
 name: workshop-scaffolder
-description: Generate the complete launch package for a brand-new workshop. Triggers on "new workshop", "spin up another workshop", "next workshop launch", "scaffold workshop", "workshop number 2", "second workshop", "duplicate workshop", "another live workshop", or any request to create a fresh workshop project from the existing Purely Personal Workshop 01 as a template. Reads BUSINESS-BRAIN.md for voice + brand. Outputs a self-contained folder with branded landing page, install guide, 21-email campaign, DM outreach, VSL script, agenda xlsx, Notion master doc, and 4 phase-walkthrough video compositions. Used by the `/new-workshop` slash command.
+description: Generates the complete launch package for a brand-new workshop. Triggers on "new workshop", "spin up another workshop", "next workshop launch", "scaffold workshop", "workshop number 2", "second workshop", "duplicate workshop", "another live workshop", or any request to create a fresh workshop project from the existing Purely Personal Workshop 01 as a template. Reads BUSINESS-BRAIN.md for voice + brand. Outputs a self-contained folder with branded landing page, install guide, 21-email campaign, DM outreach, VSL script, agenda xlsx, Notion master doc, and 4 phase-walkthrough video compositions. Used by the `/new-workshop` slash command.
 ---
 
 # Workshop Scaffolder

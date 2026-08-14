@@ -1,6 +1,6 @@
 ---
 name: business-brain-renderer
-description: Render a filled BUSINESS-BRAIN.md into a visually stunning single-page HTML artifact with exportable PDF. Triggers on "render my brain", "business brain artifact", "render business brain", "print my brain", "brain one-pager", "business brain pdf", "business brain card", "visualize my business brain", "brain hero page", "render BUSINESS-BRAIN.md", or any request to turn a Business Brain document into a visual one-pager. Also triggers when someone says "make my brain beautiful", "Purely Personal brain card", or "export my brain". Use for ANY visual rendering of BUSINESS-BRAIN.md content — even casual requests like "show me my brain".
+description: Renders a filled BUSINESS-BRAIN.md into a visually stunning single-page HTML artifact with exportable PDF. Triggers on "render my brain", "business brain artifact", "render business brain", "print my brain", "brain one-pager", "business brain pdf", "business brain card", "visualize my business brain", "brain hero page", "render BUSINESS-BRAIN.md", or any request to turn a Business Brain document into a visual one-pager. Also triggers when someone says "make my brain beautiful", "Purely Personal brain card", or "export my brain". Use for ANY visual rendering of BUSINESS-BRAIN.md content, even casual requests like "show me my brain".
 ---
 
 # Business Brain Renderer

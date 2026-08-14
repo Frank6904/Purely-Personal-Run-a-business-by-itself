@@ -1,6 +1,6 @@
 ---
 name: content-visual-builder
-description: Produce publish-ready visual content cards for LinkedIn, X, Instagram, and Newsletter in the user's voice. Reads BUSINESS-BRAIN.md for voice rules, banned phrases, hook patterns, and positioning. Triggers on "write a post", "make a LinkedIn card", "X thread visual", "newsletter visual", "carousel from this", "4-platform post", "content card", "make this a post", "ship this to LinkedIn", "turn this into content", or any request to produce visual content assets for social/newsletter distribution. Also triggers when someone says "run content machine" or "ship today's content".
+description: Produces publish-ready visual content cards for LinkedIn, X, Instagram, and Newsletter in the user's voice. Reads BUSINESS-BRAIN.md for voice rules, banned phrases, hook patterns, and positioning. Triggers on "write a post", "make a LinkedIn card", "X thread visual", "newsletter visual", "carousel from this", "4-platform post", "content card", "make this a post", "ship this to LinkedIn", "turn this into content", or any request to produce visual content assets for social/newsletter distribution. Also triggers when someone says "run content machine" or "ship today's content".
 ---
 
 # Content Visual Builder

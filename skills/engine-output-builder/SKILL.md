@@ -1,6 +1,6 @@
 ---
 name: engine-output-builder
-description: Render a single Business Brain section as a standalone shareable graphic. Use for screenshot assets, LinkedIn image posts, and social sharing. Triggers on "competitor matrix standalone", "voice card graphic", "ICP card", "brand identity card", "AI visibility card", "pain theme quote", "one section as image", "share this section", "make a graphic of my [section]", "standalone [section]", or any request to render a single section of BUSINESS-BRAIN.md as a self-contained visual asset. Also triggers when someone says "screenshot my voice rules" or "make a shareable [section]".
+description: Renders a single Business Brain section as a standalone shareable graphic. Use for screenshot assets, LinkedIn image posts, and social sharing. Triggers on "competitor matrix standalone", "voice card graphic", "ICP card", "brand identity card", "AI visibility card", "pain theme quote", "one section as image", "share this section", "make a graphic of my [section]", "standalone [section]", or any request to render a single section of BUSINESS-BRAIN.md as a self-contained visual asset. Also triggers when someone says "screenshot my voice rules" or "make a shareable [section]".
 ---
 
 # Engine Output Builder

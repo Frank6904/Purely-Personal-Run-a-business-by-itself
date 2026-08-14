@@ -1,6 +1,6 @@
 ---
 name: build-your-own-employee
-description: Build a brand-new AI employee from scratch in your own voice. Interviews you about one job in your business, writes the full SKILL.md file with all reference files, and delivers it as an installable zip. Trigger with "build a new employee", "create a skill", "I need an AI to do X", or "build your own".
+description: Builds a brand-new AI employee from scratch in your own voice. Interviews you about one job in your business, writes the full SKILL.md file with all reference files, and delivers it as an installable zip. Trigger with "build a new employee", "create a skill", "I need an AI to do X", or "build your own".
 category: Build
 ---
 
